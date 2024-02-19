@@ -1,0 +1,13 @@
+{
+    "tableName": "movies",
+    "tableType": "OFFLINE",
+    "segmentsConfig": {
+      "replication": 1,
+      "schemaName": "movies",
+      "timeColumnName": "releaseDate"
+    },
+    "tenants": {},
+    "tableIndexConfig": {},
+    "ingestionConfig": {},
+    "metadata": {}
+  }
