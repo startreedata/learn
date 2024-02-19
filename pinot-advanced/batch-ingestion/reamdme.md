@@ -43,18 +43,21 @@ FROM FILE 's3://bhdemo/movies.csv'
 
 ### Ingest using CLI
 
+In this sections, we will use CLI to ingest data.
 
+- Using docker desktop or docker command, join the pinot-controller shell.
+- Run the following command:
+
+``` bash
+/opt/pinot/bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile /scripts/job-spec-json.yaml
+```
 
 ## Validate deployment
 
 Make sure:
 
-- 1 Controller is running
-- 1 Broker is running
-- 1 Server is running
-
-Navigate to the ZooKeeper Tab to look at some configurations.
+- the movies table is pupulated following each ingestion
 
 ## Success
 
-There! You've just stood up a Apache Pinot Cluster!
+There! You've just ingested batch data using API, UI & CLI into Pinot!

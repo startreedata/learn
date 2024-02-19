@@ -3,7 +3,7 @@ executionFrameworkSpec:
   segmentGenerationJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner'
   segmentTarPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentTarPushJobRunner'
 jobType: SegmentCreationAndTarPush
-inputDirURI: '/rawdata'
+inputDirURI: '/scripts/rawdata'
 includeFileNamePattern: 'glob:**/movies.jsonl'
 outputDirURI: '/scripts/'
 overwriteOutput: true

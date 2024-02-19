@@ -1,0 +1,691 @@
+2024/02/19 23:11:30.839 INFO [PluginManager] [main] Plugin directories env: /opt/pinot/plugins, parsed directories to load: '[/opt/pinot/plugins]'
+2024/02/19 23:11:30.856 INFO [PluginManager] [main] Please use env variable 'plugins.include' to customize plugins to load. Loading all plugins: [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar/pinot-pulsar-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0/pinot-kafka-2.0-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis/pinot-kinesis-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default/pinot-segment-uploader-default-1.0.0.jar, /opt/pinot/plugins/pinot-metrics/pinot-yammer/pinot-yammer-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-metrics/pinot-dropwizard/pinot-dropwizard-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks/pinot-minion-builtin-tasks-1.0.0.jar, /opt/pinot/plugins/pinot-file-system/pinot-s3/pinot-s3-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-hdfs/pinot-hdfs-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-gcs/pinot-gcs-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-adls/pinot-adls-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based/pinot-segment-writer-file-based-1.0.0.jar, /opt/pinot/plugins/pinot-input-format/pinot-avro/pinot-avro-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-json/pinot-json-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-thrift/pinot-thrift-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-parquet/pinot-parquet-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-confluent-avro/pinot-confluent-avro-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-csv/pinot-csv-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-protobuf/pinot-protobuf-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-clp-log/pinot-clp-log-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-orc/pinot-orc-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-environment/pinot-azure/pinot-azure-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone/pinot-batch-ingestion-standalone-1.0.0-shaded.jar]
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar, pluginName: pinot-pulsar
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Added [pinot-pulsar] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar] to final list of plugins to load
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0, pluginName: pinot-kafka-2.0
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Added [pinot-kafka-2.0] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0] to final list of plugins to load
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis, pluginName: pinot-kinesis
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Added [pinot-kinesis] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis] to final list of plugins to load
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default, pluginName: pinot-segment-uploader-default
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Added [pinot-segment-uploader-default] from dir [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default] to final list of plugins to load
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-metrics/pinot-yammer, pluginName: pinot-yammer
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Added [pinot-yammer] from dir [/opt/pinot/plugins/pinot-metrics/pinot-yammer] to final list of plugins to load
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-metrics/pinot-dropwizard, pluginName: pinot-dropwizard
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Added [pinot-dropwizard] from dir [/opt/pinot/plugins/pinot-metrics/pinot-dropwizard] to final list of plugins to load
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks, pluginName: pinot-minion-builtin-tasks
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Added [pinot-minion-builtin-tasks] from dir [/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks] to final list of plugins to load
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-s3, pluginName: pinot-s3
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Added [pinot-s3] from dir [/opt/pinot/plugins/pinot-file-system/pinot-s3] to final list of plugins to load
+2024/02/19 23:11:30.857 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-hdfs, pluginName: pinot-hdfs
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Added [pinot-hdfs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-hdfs] to final list of plugins to load
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-gcs, pluginName: pinot-gcs
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Added [pinot-gcs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-gcs] to final list of plugins to load
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-adls, pluginName: pinot-adls
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Added [pinot-adls] from dir [/opt/pinot/plugins/pinot-file-system/pinot-adls] to final list of plugins to load
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based, pluginName: pinot-segment-writer-file-based
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Added [pinot-segment-writer-file-based] from dir [/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based] to final list of plugins to load
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-avro, pluginName: pinot-avro
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Added [pinot-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-avro] to final list of plugins to load
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-json, pluginName: pinot-json
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Added [pinot-json] from dir [/opt/pinot/plugins/pinot-input-format/pinot-json] to final list of plugins to load
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-thrift, pluginName: pinot-thrift
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Added [pinot-thrift] from dir [/opt/pinot/plugins/pinot-input-format/pinot-thrift] to final list of plugins to load
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-parquet, pluginName: pinot-parquet
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Added [pinot-parquet] from dir [/opt/pinot/plugins/pinot-input-format/pinot-parquet] to final list of plugins to load
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-confluent-avro, pluginName: pinot-confluent-avro
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Added [pinot-confluent-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro] to final list of plugins to load
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-csv, pluginName: pinot-csv
+2024/02/19 23:11:30.858 INFO [PluginManager] [main] Added [pinot-csv] from dir [/opt/pinot/plugins/pinot-input-format/pinot-csv] to final list of plugins to load
+2024/02/19 23:11:30.860 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-protobuf, pluginName: pinot-protobuf
+2024/02/19 23:11:30.860 INFO [PluginManager] [main] Added [pinot-protobuf] from dir [/opt/pinot/plugins/pinot-input-format/pinot-protobuf] to final list of plugins to load
+2024/02/19 23:11:30.860 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-clp-log, pluginName: pinot-clp-log
+2024/02/19 23:11:30.860 INFO [PluginManager] [main] Added [pinot-clp-log] from dir [/opt/pinot/plugins/pinot-input-format/pinot-clp-log] to final list of plugins to load
+2024/02/19 23:11:30.861 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-orc, pluginName: pinot-orc
+2024/02/19 23:11:30.861 INFO [PluginManager] [main] Added [pinot-orc] from dir [/opt/pinot/plugins/pinot-input-format/pinot-orc] to final list of plugins to load
+2024/02/19 23:11:30.861 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-environment/pinot-azure, pluginName: pinot-azure
+2024/02/19 23:11:30.861 INFO [PluginManager] [main] Added [pinot-azure] from dir [/opt/pinot/plugins/pinot-environment/pinot-azure] to final list of plugins to load
+2024/02/19 23:11:30.861 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone, pluginName: pinot-batch-ingestion-standalone
+2024/02/19 23:11:30.861 INFO [PluginManager] [main] Added [pinot-batch-ingestion-standalone] from dir [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone] to final list of plugins to load
+2024/02/19 23:11:30.861 INFO [PluginManager] [main] #getPluginsToLoad has produced 23 plugins to load
+2024/02/19 23:11:30.861 INFO [PluginManager] [main] Trying to load plugin [pinot-protobuf] from location [/opt/pinot/plugins/pinot-input-format/pinot-protobuf]
+2024/02/19 23:11:30.861 INFO [PluginManager] [main] Successfully loaded plugin [pinot-protobuf] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-protobuf/pinot-protobuf-1.0.0-shaded.jar]
+2024/02/19 23:11:30.861 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-protobuf] from dir [/opt/pinot/plugins/pinot-input-format/pinot-protobuf]
+2024/02/19 23:11:30.862 INFO [PluginManager] [main] Trying to load plugin [pinot-kafka-2.0] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0]
+2024/02/19 23:11:30.862 INFO [PluginManager] [main] Successfully loaded plugin [pinot-kafka-2.0] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0/pinot-kafka-2.0-1.0.0-shaded.jar]
+2024/02/19 23:11:30.862 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-kafka-2.0] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0]
+2024/02/19 23:11:30.862 INFO [PluginManager] [main] Trying to load plugin [pinot-avro] from location [/opt/pinot/plugins/pinot-input-format/pinot-avro]
+2024/02/19 23:11:30.862 INFO [PluginManager] [main] Successfully loaded plugin [pinot-avro] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-avro/pinot-avro-1.0.0-shaded.jar]
+2024/02/19 23:11:30.862 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-avro]
+2024/02/19 23:11:30.862 INFO [PluginManager] [main] Trying to load plugin [pinot-csv] from location [/opt/pinot/plugins/pinot-input-format/pinot-csv]
+2024/02/19 23:11:30.863 INFO [PluginManager] [main] Successfully loaded plugin [pinot-csv] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-csv/pinot-csv-1.0.0-shaded.jar]
+2024/02/19 23:11:30.863 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-csv] from dir [/opt/pinot/plugins/pinot-input-format/pinot-csv]
+2024/02/19 23:11:30.863 INFO [PluginManager] [main] Trying to load plugin [pinot-s3] from location [/opt/pinot/plugins/pinot-file-system/pinot-s3]
+2024/02/19 23:11:30.863 INFO [PluginManager] [main] Successfully loaded plugin [pinot-s3] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-s3/pinot-s3-1.0.0-shaded.jar]
+2024/02/19 23:11:30.863 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-s3] from dir [/opt/pinot/plugins/pinot-file-system/pinot-s3]
+2024/02/19 23:11:30.863 INFO [PluginManager] [main] Trying to load plugin [pinot-segment-uploader-default] from location [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default]
+2024/02/19 23:11:30.864 INFO [PluginManager] [main] Successfully loaded plugin [pinot-segment-uploader-default] from jar files: [file:/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default/pinot-segment-uploader-default-1.0.0.jar]
+2024/02/19 23:11:30.864 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-segment-uploader-default] from dir [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default]
+2024/02/19 23:11:30.864 INFO [PluginManager] [main] Trying to load plugin [pinot-yammer] from location [/opt/pinot/plugins/pinot-metrics/pinot-yammer]
+2024/02/19 23:11:30.864 INFO [PluginManager] [main] Successfully loaded plugin [pinot-yammer] from jar files: [file:/opt/pinot/plugins/pinot-metrics/pinot-yammer/pinot-yammer-1.0.0-shaded.jar]
+2024/02/19 23:11:30.864 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-yammer] from dir [/opt/pinot/plugins/pinot-metrics/pinot-yammer]
+2024/02/19 23:11:30.864 INFO [PluginManager] [main] Trying to load plugin [pinot-thrift] from location [/opt/pinot/plugins/pinot-input-format/pinot-thrift]
+2024/02/19 23:11:30.865 INFO [PluginManager] [main] Successfully loaded plugin [pinot-thrift] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-thrift/pinot-thrift-1.0.0-shaded.jar]
+2024/02/19 23:11:30.865 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-thrift] from dir [/opt/pinot/plugins/pinot-input-format/pinot-thrift]
+2024/02/19 23:11:30.865 INFO [PluginManager] [main] Trying to load plugin [pinot-confluent-avro] from location [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro]
+2024/02/19 23:11:30.865 INFO [PluginManager] [main] Successfully loaded plugin [pinot-confluent-avro] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro/pinot-confluent-avro-1.0.0-shaded.jar]
+2024/02/19 23:11:30.865 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-confluent-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro]
+2024/02/19 23:11:30.865 INFO [PluginManager] [main] Trying to load plugin [pinot-batch-ingestion-standalone] from location [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone]
+2024/02/19 23:11:30.865 INFO [PluginManager] [main] Successfully loaded plugin [pinot-batch-ingestion-standalone] from jar files: [file:/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone/pinot-batch-ingestion-standalone-1.0.0-shaded.jar]
+2024/02/19 23:11:30.865 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-batch-ingestion-standalone] from dir [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone]
+2024/02/19 23:11:30.865 INFO [PluginManager] [main] Trying to load plugin [pinot-orc] from location [/opt/pinot/plugins/pinot-input-format/pinot-orc]
+2024/02/19 23:11:30.866 INFO [PluginManager] [main] Successfully loaded plugin [pinot-orc] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-orc/pinot-orc-1.0.0-shaded.jar]
+2024/02/19 23:11:30.866 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-orc] from dir [/opt/pinot/plugins/pinot-input-format/pinot-orc]
+2024/02/19 23:11:30.866 INFO [PluginManager] [main] Trying to load plugin [pinot-pulsar] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar]
+2024/02/19 23:11:30.866 INFO [PluginManager] [main] Successfully loaded plugin [pinot-pulsar] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar/pinot-pulsar-1.0.0-shaded.jar]
+2024/02/19 23:11:30.866 INFO [Plu2024/02/19 23:13:13.046 INFO [PluginManager] [main] Plugin directories env: /opt/pinot/plugins, parsed directories to load: '[/opt/pinot/plugins]'
+2024/02/19 23:13:13.058 INFO [PluginManager] [main] Please use env variable 'plugins.include' to customize plugins to load. Loading all plugins: [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar/pinot-pulsar-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0/pinot-kafka-2.0-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis/pinot-kinesis-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default/pinot-segment-uploader-default-1.0.0.jar, /opt/pinot/plugins/pinot-metrics/pinot-yammer/pinot-yammer-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-metrics/pinot-dropwizard/pinot-dropwizard-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks/pinot-minion-builtin-tasks-1.0.0.jar, /opt/pinot/plugins/pinot-file-system/pinot-s3/pinot-s3-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-hdfs/pinot-hdfs-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-gcs/pinot-gcs-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-adls/pinot-adls-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based/pinot-segment-writer-file-based-1.0.0.jar, /opt/pinot/plugins/pinot-input-format/pinot-avro/pinot-avro-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-json/pinot-json-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-thrift/pinot-thrift-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-parquet/pinot-parquet-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-confluent-avro/pinot-confluent-avro-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-csv/pinot-csv-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-protobuf/pinot-protobuf-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-clp-log/pinot-clp-log-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-orc/pinot-orc-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-environment/pinot-azure/pinot-azure-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone/pinot-batch-ingestion-standalone-1.0.0-shaded.jar]
+2024/02/19 23:13:13.058 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar, pluginName: pinot-pulsar
+2024/02/19 23:13:13.058 INFO [PluginManager] [main] Added [pinot-pulsar] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar] to final list of plugins to load
+2024/02/19 23:13:13.058 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0, pluginName: pinot-kafka-2.0
+2024/02/19 23:13:13.058 INFO [PluginManager] [main] Added [pinot-kafka-2.0] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0] to final list of plugins to load
+2024/02/19 23:13:13.058 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis, pluginName: pinot-kinesis
+2024/02/19 23:13:13.058 INFO [PluginManager] [main] Added [pinot-kinesis] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis] to final list of plugins to load
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default, pluginName: pinot-segment-uploader-default
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Added [pinot-segment-uploader-default] from dir [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default] to final list of plugins to load
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-metrics/pinot-yammer, pluginName: pinot-yammer
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Added [pinot-yammer] from dir [/opt/pinot/plugins/pinot-metrics/pinot-yammer] to final list of plugins to load
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-metrics/pinot-dropwizard, pluginName: pinot-dropwizard
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Added [pinot-dropwizard] from dir [/opt/pinot/plugins/pinot-metrics/pinot-dropwizard] to final list of plugins to load
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks, pluginName: pinot-minion-builtin-tasks
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Added [pinot-minion-builtin-tasks] from dir [/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks] to final list of plugins to load
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-s3, pluginName: pinot-s3
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Added [pinot-s3] from dir [/opt/pinot/plugins/pinot-file-system/pinot-s3] to final list of plugins to load
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-hdfs, pluginName: pinot-hdfs
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Added [pinot-hdfs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-hdfs] to final list of plugins to load
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-gcs, pluginName: pinot-gcs
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Added [pinot-gcs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-gcs] to final list of plugins to load
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-adls, pluginName: pinot-adls
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Added [pinot-adls] from dir [/opt/pinot/plugins/pinot-file-system/pinot-adls] to final list of plugins to load
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based, pluginName: pinot-segment-writer-file-based
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Added [pinot-segment-writer-file-based] from dir [/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based] to final list of plugins to load
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-avro, pluginName: pinot-avro
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Added [pinot-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-avro] to final list of plugins to load
+2024/02/19 23:13:13.059 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-json, pluginName: pinot-json
+2024/02/19 23:13:13.060 INFO [PluginManager] [main] Added [pinot-json] from dir [/opt/pinot/plugins/pinot-input-format/pinot-json] to final list of plugins to load
+2024/02/19 23:13:13.060 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-thrift, pluginName: pinot-thrift
+2024/02/19 23:13:13.060 INFO [PluginManager] [main] Added [pinot-thrift] from dir [/opt/pinot/plugins/pinot-input-format/pinot-thrift] to final list of plugins to load
+2024/02/19 23:13:13.060 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-parquet, pluginName: pinot-parquet
+2024/02/19 23:13:13.060 INFO [PluginManager] [main] Added [pinot-parquet] from dir [/opt/pinot/plugins/pinot-input-format/pinot-parquet] to final list of plugins to load
+2024/02/19 23:13:13.060 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-confluent-avro, pluginName: pinot-confluent-avro
+2024/02/19 23:13:13.060 INFO [PluginManager] [main] Added [pinot-confluent-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro] to final list of plugins to load
+2024/02/19 23:13:13.060 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-csv, pluginName: pinot-csv
+2024/02/19 23:13:13.060 INFO [PluginManager] [main] Added [pinot-csv] from dir [/opt/pinot/plugins/pinot-input-format/pinot-csv] to final list of plugins to load
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-protobuf, pluginName: pinot-protobuf
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] Added [pinot-protobuf] from dir [/opt/pinot/plugins/pinot-input-format/pinot-protobuf] to final list of plugins to load
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-clp-log, pluginName: pinot-clp-log
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] Added [pinot-clp-log] from dir [/opt/pinot/plugins/pinot-input-format/pinot-clp-log] to final list of plugins to load
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-orc, pluginName: pinot-orc
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] Added [pinot-orc] from dir [/opt/pinot/plugins/pinot-input-format/pinot-orc] to final list of plugins to load
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-environment/pinot-azure, pluginName: pinot-azure
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] Added [pinot-azure] from dir [/opt/pinot/plugins/pinot-environment/pinot-azure] to final list of plugins to load
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone, pluginName: pinot-batch-ingestion-standalone
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] Added [pinot-batch-ingestion-standalone] from dir [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone] to final list of plugins to load
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] #getPluginsToLoad has produced 23 plugins to load
+2024/02/19 23:13:13.061 INFO [PluginManager] [main] Trying to load plugin [pinot-protobuf] from location [/opt/pinot/plugins/pinot-input-format/pinot-protobuf]
+2024/02/19 23:13:13.062 INFO [PluginManager] [main] Successfully loaded plugin [pinot-protobuf] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-protobuf/pinot-protobuf-1.0.0-shaded.jar]
+2024/02/19 23:13:13.062 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-protobuf] from dir [/opt/pinot/plugins/pinot-input-format/pinot-protobuf]
+2024/02/19 23:13:13.062 INFO [PluginManager] [main] Trying to load plugin [pinot-kafka-2.0] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0]
+2024/02/19 23:13:13.062 INFO [PluginManager] [main] Successfully loaded plugin [pinot-kafka-2.0] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0/pinot-kafka-2.0-1.0.0-shaded.jar]
+2024/02/19 23:13:13.062 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-kafka-2.0] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0]
+2024/02/19 23:13:13.062 INFO [PluginManager] [main] Trying to load plugin [pinot-avro] from location [/opt/pinot/plugins/pinot-input-format/pinot-avro]
+2024/02/19 23:13:13.063 INFO [PluginManager] [main] Successfully loaded plugin [pinot-avro] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-avro/pinot-avro-1.0.0-shaded.jar]
+2024/02/19 23:13:13.063 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-avro]
+2024/02/19 23:13:13.063 INFO [PluginManager] [main] Trying to load plugin [pinot-csv] from location [/opt/pinot/plugins/pinot-input-format/pinot-csv]
+2024/02/19 23:13:13.063 INFO [PluginManager] [main] Successfully loaded plugin [pinot-csv] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-csv/pinot-csv-1.0.0-shaded.jar]
+2024/02/19 23:13:13.063 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-csv] from dir [/opt/pinot/plugins/pinot-input-format/pinot-csv]
+2024/02/19 23:13:13.063 INFO [PluginManager] [main] Trying to load plugin [pinot-s3] from location [/opt/pinot/plugins/pinot-file-system/pinot-s3]
+2024/02/19 23:13:13.063 INFO [PluginManager] [main] Successfully loaded plugin [pinot-s3] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-s3/pinot-s3-1.0.0-shaded.jar]
+2024/02/19 23:13:13.064 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-s3] from dir [/opt/pinot/plugins/pinot-file-system/pinot-s3]
+2024/02/19 23:13:13.064 INFO [PluginManager] [main] Trying to load plugin [pinot-segment-uploader-default] from location [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default]
+2024/02/19 23:13:13.064 INFO [PluginManager] [main] Successfully loaded plugin [pinot-segment-uploader-default] from jar files: [file:/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default/pinot-segment-uploader-default-1.0.0.jar]
+2024/02/19 23:13:13.064 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-segment-uploader-default] from dir [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default]
+2024/02/19 23:13:13.064 INFO [PluginManager] [main] Trying to load plugin [pinot-yammer] from location [/opt/pinot/plugins/pinot-metrics/pinot-yammer]
+2024/02/19 23:13:13.064 INFO [PluginManager] [main] Successfully loaded plugin [pinot-yammer] from jar files: [file:/opt/pinot/plugins/pinot-metrics/pinot-yammer/pinot-yammer-1.0.0-shaded.jar]
+2024/02/19 23:13:13.064 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-yammer] from dir [/opt/pinot/plugins/pinot-metrics/pinot-yammer]
+2024/02/19 23:13:13.064 INFO [PluginManager] [main] Trying to load plugin [pinot-thrift] from location [/opt/pinot/plugins/pinot-input-format/pinot-thrift]
+2024/02/19 23:13:13.065 INFO [PluginManager] [main] Successfully loaded plugin [pinot-thrift] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-thrift/pinot-thrift-1.0.0-shaded.jar]
+2024/02/19 23:13:13.065 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-thrift] from dir [/opt/pinot/plugins/pinot-input-format/pinot-thrift]
+2024/02/19 23:13:13.065 INFO [PluginManager] [main] Trying to load plugin [pinot-confluent-avro] from location [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro]
+2024/02/19 23:13:13.065 INFO [PluginManager] [main] Successfully loaded plugin [pinot-confluent-avro] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro/pinot-confluent-avro-1.0.0-shaded.jar]
+2024/02/19 23:13:13.065 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-confluent-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro]
+2024/02/19 23:13:13.065 INFO [PluginManager] [main] Trying to load plugin [pinot-batch-ingestion-standalone] from location [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone]
+2024/02/19 23:13:13.065 INFO [PluginManager] [main] Successfully loaded plugin [pinot-batch-ingestion-standalone] from jar files: [file:/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone/pinot-batch-ingestion-standalone-1.0.0-shaded.jar]
+2024/02/19 23:13:13.065 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-batch-ingestion-standalone] from dir [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone]
+2024/02/19 23:13:13.065 INFO [PluginManager] [main] Trying to load plugin [pinot-orc] from location [/opt/pinot/plugins/pinot-input-format/pinot-orc]
+2024/02/19 23:13:13.066 INFO [PluginManager] [main] Successfully loaded plugin [pinot-orc] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-orc/pinot-orc-1.0.0-shaded.jar]
+2024/02/19 23:13:13.066 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-orc] from dir [/opt/pinot/plugins/pinot-input-format/pinot-orc]
+2024/02/19 23:13:13.066 INFO [PluginManager] [main] Trying to load plugin [pinot-pulsar] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar]
+2024/02/19 23:13:13.066 INFO [PluginManager] [main] Successfully loaded plugin [pinot-pulsar] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar/pinot-pulsar-1.0.0-shaded.jar]
+2024/02/19 23:13:13.066 INFO [Plu2024/02/19 23:14:21.687 INFO [PluginManager] [main] Plugin directories env: /opt/pinot/plugins, parsed directories to load: '[/opt/pinot/plugins]'
+2024/02/19 23:14:21.699 INFO [PluginManager] [main] Please use env variable 'plugins.include' to customize plugins to load. Loading all plugins: [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar/pinot-pulsar-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0/pinot-kafka-2.0-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis/pinot-kinesis-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default/pinot-segment-uploader-default-1.0.0.jar, /opt/pinot/plugins/pinot-metrics/pinot-yammer/pinot-yammer-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-metrics/pinot-dropwizard/pinot-dropwizard-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks/pinot-minion-builtin-tasks-1.0.0.jar, /opt/pinot/plugins/pinot-file-system/pinot-s3/pinot-s3-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-hdfs/pinot-hdfs-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-gcs/pinot-gcs-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-adls/pinot-adls-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based/pinot-segment-writer-file-based-1.0.0.jar, /opt/pinot/plugins/pinot-input-format/pinot-avro/pinot-avro-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-json/pinot-json-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-thrift/pinot-thrift-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-parquet/pinot-parquet-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-confluent-avro/pinot-confluent-avro-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-csv/pinot-csv-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-protobuf/pinot-protobuf-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-clp-log/pinot-clp-log-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-orc/pinot-orc-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-environment/pinot-azure/pinot-azure-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone/pinot-batch-ingestion-standalone-1.0.0-shaded.jar]
+2024/02/19 23:14:21.699 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar, pluginName: pinot-pulsar
+2024/02/19 23:14:21.699 INFO [PluginManager] [main] Added [pinot-pulsar] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar] to final list of plugins to load
+2024/02/19 23:14:21.699 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0, pluginName: pinot-kafka-2.0
+2024/02/19 23:14:21.699 INFO [PluginManager] [main] Added [pinot-kafka-2.0] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0] to final list of plugins to load
+2024/02/19 23:14:21.699 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis, pluginName: pinot-kinesis
+2024/02/19 23:14:21.699 INFO [PluginManager] [main] Added [pinot-kinesis] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis] to final list of plugins to load
+2024/02/19 23:14:21.699 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default, pluginName: pinot-segment-uploader-default
+2024/02/19 23:14:21.699 INFO [PluginManager] [main] Added [pinot-segment-uploader-default] from dir [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default] to final list of plugins to load
+2024/02/19 23:14:21.699 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-metrics/pinot-yammer, pluginName: pinot-yammer
+2024/02/19 23:14:21.699 INFO [PluginManager] [main] Added [pinot-yammer] from dir [/opt/pinot/plugins/pinot-metrics/pinot-yammer] to final list of plugins to load
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-metrics/pinot-dropwizard, pluginName: pinot-dropwizard
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Added [pinot-dropwizard] from dir [/opt/pinot/plugins/pinot-metrics/pinot-dropwizard] to final list of plugins to load
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks, pluginName: pinot-minion-builtin-tasks
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Added [pinot-minion-builtin-tasks] from dir [/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks] to final list of plugins to load
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-s3, pluginName: pinot-s3
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Added [pinot-s3] from dir [/opt/pinot/plugins/pinot-file-system/pinot-s3] to final list of plugins to load
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-hdfs, pluginName: pinot-hdfs
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Added [pinot-hdfs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-hdfs] to final list of plugins to load
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-gcs, pluginName: pinot-gcs
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Added [pinot-gcs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-gcs] to final list of plugins to load
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-adls, pluginName: pinot-adls
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Added [pinot-adls] from dir [/opt/pinot/plugins/pinot-file-system/pinot-adls] to final list of plugins to load
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based, pluginName: pinot-segment-writer-file-based
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Added [pinot-segment-writer-file-based] from dir [/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based] to final list of plugins to load
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-avro, pluginName: pinot-avro
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Added [pinot-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-avro] to final list of plugins to load
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-json, pluginName: pinot-json
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Added [pinot-json] from dir [/opt/pinot/plugins/pinot-input-format/pinot-json] to final list of plugins to load
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-thrift, pluginName: pinot-thrift
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Added [pinot-thrift] from dir [/opt/pinot/plugins/pinot-input-format/pinot-thrift] to final list of plugins to load
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-parquet, pluginName: pinot-parquet
+2024/02/19 23:14:21.700 INFO [PluginManager] [main] Added [pinot-parquet] from dir [/opt/pinot/plugins/pinot-input-format/pinot-parquet] to final list of plugins to load
+2024/02/19 23:14:21.701 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-confluent-avro, pluginName: pinot-confluent-avro
+2024/02/19 23:14:21.701 INFO [PluginManager] [main] Added [pinot-confluent-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro] to final list of plugins to load
+2024/02/19 23:14:21.701 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-csv, pluginName: pinot-csv
+2024/02/19 23:14:21.701 INFO [PluginManager] [main] Added [pinot-csv] from dir [/opt/pinot/plugins/pinot-input-format/pinot-csv] to final list of plugins to load
+2024/02/19 23:14:21.701 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-protobuf, pluginName: pinot-protobuf
+2024/02/19 23:14:21.701 INFO [PluginManager] [main] Added [pinot-protobuf] from dir [/opt/pinot/plugins/pinot-input-format/pinot-protobuf] to final list of plugins to load
+2024/02/19 23:14:21.701 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-clp-log, pluginName: pinot-clp-log
+2024/02/19 23:14:21.701 INFO [PluginManager] [main] Added [pinot-clp-log] from dir [/opt/pinot/plugins/pinot-input-format/pinot-clp-log] to final list of plugins to load
+2024/02/19 23:14:21.701 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-orc, pluginName: pinot-orc
+2024/02/19 23:14:21.702 INFO [PluginManager] [main] Added [pinot-orc] from dir [/opt/pinot/plugins/pinot-input-format/pinot-orc] to final list of plugins to load
+2024/02/19 23:14:21.702 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-environment/pinot-azure, pluginName: pinot-azure
+2024/02/19 23:14:21.702 INFO [PluginManager] [main] Added [pinot-azure] from dir [/opt/pinot/plugins/pinot-environment/pinot-azure] to final list of plugins to load
+2024/02/19 23:14:21.702 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone, pluginName: pinot-batch-ingestion-standalone
+2024/02/19 23:14:21.702 INFO [PluginManager] [main] Added [pinot-batch-ingestion-standalone] from dir [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone] to final list of plugins to load
+2024/02/19 23:14:21.702 INFO [PluginManager] [main] #getPluginsToLoad has produced 23 plugins to load
+2024/02/19 23:14:21.702 INFO [PluginManager] [main] Trying to load plugin [pinot-protobuf] from location [/opt/pinot/plugins/pinot-input-format/pinot-protobuf]
+2024/02/19 23:14:21.702 INFO [PluginManager] [main] Successfully loaded plugin [pinot-protobuf] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-protobuf/pinot-protobuf-1.0.0-shaded.jar]
+2024/02/19 23:14:21.702 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-protobuf] from dir [/opt/pinot/plugins/pinot-input-format/pinot-protobuf]
+2024/02/19 23:14:21.702 INFO [PluginManager] [main] Trying to load plugin [pinot-kafka-2.0] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0]
+2024/02/19 23:14:21.703 INFO [PluginManager] [main] Successfully loaded plugin [pinot-kafka-2.0] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0/pinot-kafka-2.0-1.0.0-shaded.jar]
+2024/02/19 23:14:21.703 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-kafka-2.0] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0]
+2024/02/19 23:14:21.703 INFO [PluginManager] [main] Trying to load plugin [pinot-avro] from location [/opt/pinot/plugins/pinot-input-format/pinot-avro]
+2024/02/19 23:14:21.703 INFO [PluginManager] [main] Successfully loaded plugin [pinot-avro] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-avro/pinot-avro-1.0.0-shaded.jar]
+2024/02/19 23:14:21.703 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-avro]
+2024/02/19 23:14:21.703 INFO [PluginManager] [main] Trying to load plugin [pinot-csv] from location [/opt/pinot/plugins/pinot-input-format/pinot-csv]
+2024/02/19 23:14:21.703 INFO [PluginManager] [main] Successfully loaded plugin [pinot-csv] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-csv/pinot-csv-1.0.0-shaded.jar]
+2024/02/19 23:14:21.703 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-csv] from dir [/opt/pinot/plugins/pinot-input-format/pinot-csv]
+2024/02/19 23:14:21.704 INFO [PluginManager] [main] Trying to load plugin [pinot-s3] from location [/opt/pinot/plugins/pinot-file-system/pinot-s3]
+2024/02/19 23:14:21.704 INFO [PluginManager] [main] Successfully loaded plugin [pinot-s3] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-s3/pinot-s3-1.0.0-shaded.jar]
+2024/02/19 23:14:21.704 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-s3] from dir [/opt/pinot/plugins/pinot-file-system/pinot-s3]
+2024/02/19 23:14:21.704 INFO [PluginManager] [main] Trying to load plugin [pinot-segment-uploader-default] from location [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default]
+2024/02/19 23:14:21.704 INFO [PluginManager] [main] Successfully loaded plugin [pinot-segment-uploader-default] from jar files: [file:/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default/pinot-segment-uploader-default-1.0.0.jar]
+2024/02/19 23:14:21.704 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-segment-uploader-default] from dir [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default]
+2024/02/19 23:14:21.704 INFO [PluginManager] [main] Trying to load plugin [pinot-yammer] from location [/opt/pinot/plugins/pinot-metrics/pinot-yammer]
+2024/02/19 23:14:21.705 INFO [PluginManager] [main] Successfully loaded plugin [pinot-yammer] from jar files: [file:/opt/pinot/plugins/pinot-metrics/pinot-yammer/pinot-yammer-1.0.0-shaded.jar]
+2024/02/19 23:14:21.705 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-yammer] from dir [/opt/pinot/plugins/pinot-metrics/pinot-yammer]
+2024/02/19 23:14:21.705 INFO [PluginManager] [main] Trying to load plugin [pinot-thrift] from location [/opt/pinot/plugins/pinot-input-format/pinot-thrift]
+2024/02/19 23:14:21.705 INFO [PluginManager] [main] Successfully loaded plugin [pinot-thrift] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-thrift/pinot-thrift-1.0.0-shaded.jar]
+2024/02/19 23:14:21.705 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-thrift] from dir [/opt/pinot/plugins/pinot-input-format/pinot-thrift]
+2024/02/19 23:14:21.705 INFO [PluginManager] [main] Trying to load plugin [pinot-confluent-avro] from location [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro]
+2024/02/19 23:14:21.706 INFO [PluginManager] [main] Successfully loaded plugin [pinot-confluent-avro] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro/pinot-confluent-avro-1.0.0-shaded.jar]
+2024/02/19 23:14:21.706 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-confluent-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro]
+2024/02/19 23:14:21.706 INFO [PluginManager] [main] Trying to load plugin [pinot-batch-ingestion-standalone] from location [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone]
+2024/02/19 23:14:21.706 INFO [PluginManager] [main] Successfully loaded plugin [pinot-batch-ingestion-standalone] from jar files: [file:/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone/pinot-batch-ingestion-standalone-1.0.0-shaded.jar]
+2024/02/19 23:14:21.706 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-batch-ingestion-standalone] from dir [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone]
+2024/02/19 23:14:21.706 INFO [PluginManager] [main] Trying to load plugin [pinot-orc] from location [/opt/pinot/plugins/pinot-input-format/pinot-orc]
+2024/02/19 23:14:21.706 INFO [PluginManager] [main] Successfully loaded plugin [pinot-orc] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-orc/pinot-orc-1.0.0-shaded.jar]
+2024/02/19 23:14:21.706 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-orc] from dir [/opt/pinot/plugins/pinot-input-format/pinot-orc]
+2024/02/19 23:14:21.706 INFO [PluginManager] [main] Trying to load plugin [pinot-pulsar] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar]
+2024/02/19 23:14:21.707 INFO [PluginManager] [main] Successfully loaded plugin [pinot-pulsar] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar/pinot-pulsar-1.0.0-shaded.jar]
+2024/02/19 23:14:21.707 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-pulsar] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar]
+2024/02/19 23:14:21.707 INFO [PluginManager] [main] Trying to load plugin [pinot-clp-log] from location [/opt/pinot/plugins/pinot-input-format/pinot-clp-log]
+2024/02/19 23:14:21.707 INFO [PluginManager] [main] Successfully loaded plugin [pinot-clp-log] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-clp-log/pinot-clp-log-1.0.0-shaded.jar]
+2024/02/19 23:14:21.707 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-clp-log] from dir [/opt/pinot/plugins/pinot-input-format/pinot-clp-log]
+2024/02/19 23:14:21.708 INFO [PluginManager] [main] Trying to load plugin [pinot-dropwizard] from location [/opt/pinot/plugins/pinot-metrics/pinot-dropwizard]
+2024/02/19 23:14:21.708 INFO [PluginManager] [main] Successfully loaded plugin [pinot-dropwizard] from jar files: [file:/opt/pinot/plugins/pinot-metrics/pinot-dropwizard/pinot-dropwizard-1.0.0-shaded.jar]
+2024/02/19 23:14:21.708 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-dropwizard] from dir [/opt/pinot/plugins/pinot-metrics/pinot-dropwizard]
+2024/02/19 23:14:21.708 INFO [PluginManager] [main] Trying to load plugin [pinot-gcs] from location [/opt/pinot/plugins/pinot-file-system/pinot-gcs]
+2024/02/19 23:14:21.708 INFO [PluginManager] [main] Successfully loaded plugin [pinot-gcs] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-gcs/pinot-gcs-1.0.0-shaded.jar]
+2024/02/19 23:14:21.708 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-gcs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-gcs]
+2024/02/19 23:14:21.708 INFO [PluginManager] [main] Trying to load plugin [pinot-azure] from location [/opt/pinot/plugins/pinot-environment/pinot-azure]
+2024/02/19 23:14:21.708 INFO [PluginManager] [main] Successfully loaded plugin [pinot-azure] from jar files: [file:/opt/pinot/plugins/pinot-environment/pinot-azure/pinot-azure-1.0.0-shaded.jar]
+2024/02/19 23:14:21.708 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-azure] from dir [/opt/pinot/plugins/pinot-environment/pinot-azure]
+2024/02/19 23:14:21.708 INFO [PluginManager] [main] Trying to load plugin [pinot-hdfs] from location [/opt/pinot/plugins/pinot-file-system/pinot-hdfs]
+2024/02/19 23:14:21.709 INFO [PluginManager] [main] Successfully loaded plugin [pinot-hdfs] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-hdfs/pinot-hdfs-1.0.0-shaded.jar]
+2024/02/19 23:14:21.709 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-hdfs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-hdfs]
+2024/02/19 23:14:21.709 INFO [PluginManager] [main] Trying to load plugin [pinot-kinesis] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis]
+2024/02/19 23:14:21.709 INFO [PluginManager] [main] Successfully loaded plugin [pinot-kinesis] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis/pinot-kinesis-1.0.0-shaded.jar]
+2024/02/19 23:14:21.709 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-kinesis] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis]
+2024/02/19 23:14:21.709 INFO [PluginManager] [main] Trying to load plugin [pinot-adls] from location [/opt/pinot/plugins/pinot-file-system/pinot-adls]
+2024/02/19 23:14:21.709 INFO [PluginManager] [main] Successfully loaded plugin [pinot-adls] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-adls/pinot-adls-1.0.0-shaded.jar]
+2024/02/19 23:14:21.709 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-adls] from dir [/opt/pinot/plugins/pinot-file-system/pinot-adls]
+2024/02/19 23:14:21.709 INFO [PluginManager] [main] Trying to load plugin [pinot-minion-builtin-tasks] from location [/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks]
+2024/02/19 23:14:21.710 INFO [PluginManager] [main] Successfully loaded plugin [pinot-minion-builtin-tasks] from jar files: [file:/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks/pinot-minion-builtin-tasks-1.0.0.jar]
+2024/02/19 23:14:21.710 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-minion-builtin-tasks] from dir [/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks]
+2024/02/19 23:14:21.710 INFO [PluginManager] [main] Trying to load plugin [pinot-json] from location [/opt/pinot/plugins/pinot-input-format/pinot-json]
+2024/02/19 23:14:21.710 INFO [PluginManager] [main] Successfully loaded plugin [pinot-json] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-json/pinot-json-1.0.0-shaded.jar]
+2024/02/19 23:14:21.710 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-json] from dir [/opt/pinot/plugins/pinot-input-format/pinot-json]
+2024/02/19 23:14:21.710 INFO [PluginManager] [main] Trying to load plugin [pinot-parquet] from location [/opt/pinot/plugins/pinot-input-format/pinot-parquet]
+2024/02/19 23:14:21.711 INFO [PluginManager] [main] Successfully loaded plugin [pinot-parquet] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-parquet/pinot-parquet-1.0.0-shaded.jar]
+2024/02/19 23:14:21.711 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-parquet] from dir [/opt/pinot/plugins/pinot-input-format/pinot-parquet]
+2024/02/19 23:14:21.711 INFO [PluginManager] [main] Trying to load plugin [pinot-segment-writer-file-based] from location [/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based]
+2024/02/19 23:14:21.711 INFO [PluginManager] [main] Successfully loaded plugin [pinot-segment-writer-file-based] from jar files: [file:/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based/pinot-segment-writer-file-based-1.0.0.jar]
+2024/02/19 23:14:21.711 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-segment-writer-file-based] from dir [/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based]
+2024/02/19 23:14:22.864 INFO [IngestionJobLauncher] [main] SegmentGenerationJobSpec: 
+{
+  "tlsSpec" : null,
+  "executionFrameworkSpec" : {
+    "name" : "standalone",
+    "segmentGenerationJobRunnerClassName" : "org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner",
+    "segmentTarPushJobRunnerClassName" : "org.apache.pinot.plugin.ingestion.batch.standalone.SegmentTarPushJobRunner",
+    "segmentUriPushJobRunnerClassName" : null,
+    "segmentMetadataPushJobRunnerClassName" : null,
+    "extraConfigs" : null
+  },
+  "pinotFSSpecs" : [ {
+    "scheme" : "file",
+    "className" : "org.apache.pinot.spi.filesystem.LocalPinotFS",
+    "configs" : null
+  } ],
+  "failOnEmptySegment" : false,
+  "inputDirURI" : "/rawdata",
+  "includeFileNamePattern" : "glob:**/movies.jsonl",
+  "outputDirURI" : "/scripts/",
+  "cleanUpOutputDir" : false,
+  "overwriteOutput" : true,
+  "jobType" : "SegmentCreationAndTarPush",
+  "recordReaderSpec" : {
+    "className" : "org.apache.pinot.plugin.inputformat.json.JSONRecordReader",
+    "dataFormat" : "json",
+    "configClassName" : null,
+    "configs" : null
+  },
+  "tableSpec" : {
+    "tableName" : "movies",
+    "schemaURI" : null,
+    "tableConfigURI" : null
+  },
+  "segmentNameGeneratorSpec" : null,
+  "pinotClusterSpecs" : [ {
+    "controllerURI" : "http://localhost:9000"
+  } ],
+  "pushJobSpec" : {
+    "pushAttempts" : 2,
+    "pushRetryIntervalMillis" : 1000,
+    "preferMetadataTarGz" : true,
+    "pushFileNamePattern" : null,
+    "segmentUriPrefix" : null,
+    "segmentUriSuffix" : null,
+    "pushParallelism" : 2,
+    "copyToDeepStoreForMetadataPush" : false
+  },
+  "searchRecursively" : true,
+  "excludeFileNamePattern" : null,
+  "segmentCreationJobParallelism" : 0,
+  "createMetadataTarGz" : false
+}
+2024/02/19 23:14:22.865 INFO [IngestionJobLauncher] [main] Trying to create instance for class org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner
+2024/02/19 23:14:22.909 INFO [PinotFSFactory] [main] Initializing PinotFS for scheme file, classname org.apache.pinot.spi.filesystem.LocalPinotFS
+2024/02/19 23:14:23.576 INFO [SegmentPushUtils] [main] Consistent data push is: disabled
+2024/02/19 23:14:23.577 INFO [SegmentGenerationJobRunner] [main] Creating an executor service wit2024/02/19 23:15:24.107 INFO [PluginManager] [main] Plugin directories env: /opt/pinot/plugins, parsed directories to load: '[/opt/pinot/plugins]'
+2024/02/19 23:15:24.119 INFO [PluginManager] [main] Please use env variable 'plugins.include' to customize plugins to load. Loading all plugins: [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar/pinot-pulsar-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0/pinot-kafka-2.0-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis/pinot-kinesis-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default/pinot-segment-uploader-default-1.0.0.jar, /opt/pinot/plugins/pinot-metrics/pinot-yammer/pinot-yammer-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-metrics/pinot-dropwizard/pinot-dropwizard-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks/pinot-minion-builtin-tasks-1.0.0.jar, /opt/pinot/plugins/pinot-file-system/pinot-s3/pinot-s3-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-hdfs/pinot-hdfs-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-gcs/pinot-gcs-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-adls/pinot-adls-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based/pinot-segment-writer-file-based-1.0.0.jar, /opt/pinot/plugins/pinot-input-format/pinot-avro/pinot-avro-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-json/pinot-json-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-thrift/pinot-thrift-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-parquet/pinot-parquet-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-confluent-avro/pinot-confluent-avro-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-csv/pinot-csv-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-protobuf/pinot-protobuf-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-clp-log/pinot-clp-log-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-orc/pinot-orc-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-environment/pinot-azure/pinot-azure-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone/pinot-batch-ingestion-standalone-1.0.0-shaded.jar]
+2024/02/19 23:15:24.119 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar, pluginName: pinot-pulsar
+2024/02/19 23:15:24.119 INFO [PluginManager] [main] Added [pinot-pulsar] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar] to final list of plugins to load
+2024/02/19 23:15:24.119 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0, pluginName: pinot-kafka-2.0
+2024/02/19 23:15:24.119 INFO [PluginManager] [main] Added [pinot-kafka-2.0] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0] to final list of plugins to load
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis, pluginName: pinot-kinesis
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Added [pinot-kinesis] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis] to final list of plugins to load
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default, pluginName: pinot-segment-uploader-default
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Added [pinot-segment-uploader-default] from dir [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default] to final list of plugins to load
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-metrics/pinot-yammer, pluginName: pinot-yammer
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Added [pinot-yammer] from dir [/opt/pinot/plugins/pinot-metrics/pinot-yammer] to final list of plugins to load
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-metrics/pinot-dropwizard, pluginName: pinot-dropwizard
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Added [pinot-dropwizard] from dir [/opt/pinot/plugins/pinot-metrics/pinot-dropwizard] to final list of plugins to load
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks, pluginName: pinot-minion-builtin-tasks
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Added [pinot-minion-builtin-tasks] from dir [/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks] to final list of plugins to load
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-s3, pluginName: pinot-s3
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Added [pinot-s3] from dir [/opt/pinot/plugins/pinot-file-system/pinot-s3] to final list of plugins to load
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-hdfs, pluginName: pinot-hdfs
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Added [pinot-hdfs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-hdfs] to final list of plugins to load
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-gcs, pluginName: pinot-gcs
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Added [pinot-gcs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-gcs] to final list of plugins to load
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-adls, pluginName: pinot-adls
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Added [pinot-adls] from dir [/opt/pinot/plugins/pinot-file-system/pinot-adls] to final list of plugins to load
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based, pluginName: pinot-segment-writer-file-based
+2024/02/19 23:15:24.120 INFO [PluginManager] [main] Added [pinot-segment-writer-file-based] from dir [/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based] to final list of plugins to load
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-avro, pluginName: pinot-avro
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Added [pinot-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-avro] to final list of plugins to load
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-json, pluginName: pinot-json
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Added [pinot-json] from dir [/opt/pinot/plugins/pinot-input-format/pinot-json] to final list of plugins to load
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-thrift, pluginName: pinot-thrift
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Added [pinot-thrift] from dir [/opt/pinot/plugins/pinot-input-format/pinot-thrift] to final list of plugins to load
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-parquet, pluginName: pinot-parquet
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Added [pinot-parquet] from dir [/opt/pinot/plugins/pinot-input-format/pinot-parquet] to final list of plugins to load
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-confluent-avro, pluginName: pinot-confluent-avro
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Added [pinot-confluent-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro] to final list of plugins to load
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-csv, pluginName: pinot-csv
+2024/02/19 23:15:24.121 INFO [PluginManager] [main] Added [pinot-csv] from dir [/opt/pinot/plugins/pinot-input-format/pinot-csv] to final list of plugins to load
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-protobuf, pluginName: pinot-protobuf
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] Added [pinot-protobuf] from dir [/opt/pinot/plugins/pinot-input-format/pinot-protobuf] to final list of plugins to load
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-clp-log, pluginName: pinot-clp-log
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] Added [pinot-clp-log] from dir [/opt/pinot/plugins/pinot-input-format/pinot-clp-log] to final list of plugins to load
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-orc, pluginName: pinot-orc
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] Added [pinot-orc] from dir [/opt/pinot/plugins/pinot-input-format/pinot-orc] to final list of plugins to load
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-environment/pinot-azure, pluginName: pinot-azure
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] Added [pinot-azure] from dir [/opt/pinot/plugins/pinot-environment/pinot-azure] to final list of plugins to load
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone, pluginName: pinot-batch-ingestion-standalone
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] Added [pinot-batch-ingestion-standalone] from dir [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone] to final list of plugins to load
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] #getPluginsToLoad has produced 23 plugins to load
+2024/02/19 23:15:24.122 INFO [PluginManager] [main] Trying to load plugin [pinot-protobuf] from location [/opt/pinot/plugins/pinot-input-format/pinot-protobuf]
+2024/02/19 23:15:24.123 INFO [PluginManager] [main] Successfully loaded plugin [pinot-protobuf] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-protobuf/pinot-protobuf-1.0.0-shaded.jar]
+2024/02/19 23:15:24.123 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-protobuf] from dir [/opt/pinot/plugins/pinot-input-format/pinot-protobuf]
+2024/02/19 23:15:24.123 INFO [PluginManager] [main] Trying to load plugin [pinot-kafka-2.0] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0]
+2024/02/19 23:15:24.123 INFO [PluginManager] [main] Successfully loaded plugin [pinot-kafka-2.0] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0/pinot-kafka-2.0-1.0.0-shaded.jar]
+2024/02/19 23:15:24.123 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-kafka-2.0] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0]
+2024/02/19 23:15:24.123 INFO [PluginManager] [main] Trying to load plugin [pinot-avro] from location [/opt/pinot/plugins/pinot-input-format/pinot-avro]
+2024/02/19 23:15:24.123 INFO [PluginManager] [main] Successfully loaded plugin [pinot-avro] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-avro/pinot-avro-1.0.0-shaded.jar]
+2024/02/19 23:15:24.123 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-avro]
+2024/02/19 23:15:24.123 INFO [PluginManager] [main] Trying to load plugin [pinot-csv] from location [/opt/pinot/plugins/pinot-input-format/pinot-csv]
+2024/02/19 23:15:24.124 INFO [PluginManager] [main] Successfully loaded plugin [pinot-csv] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-csv/pinot-csv-1.0.0-shaded.jar]
+2024/02/19 23:15:24.124 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-csv] from dir [/opt/pinot/plugins/pinot-input-format/pinot-csv]
+2024/02/19 23:15:24.124 INFO [PluginManager] [main] Trying to load plugin [pinot-s3] from location [/opt/pinot/plugins/pinot-file-system/pinot-s3]
+2024/02/19 23:15:24.124 INFO [PluginManager] [main] Successfully loaded plugin [pinot-s3] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-s3/pinot-s3-1.0.0-shaded.jar]
+2024/02/19 23:15:24.124 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-s3] from dir [/opt/pinot/plugins/pinot-file-system/pinot-s3]
+2024/02/19 23:15:24.124 INFO [PluginManager] [main] Trying to load plugin [pinot-segment-uploader-default] from location [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default]
+2024/02/19 23:15:24.124 INFO [PluginManager] [main] Successfully loaded plugin [pinot-segment-uploader-default] from jar files: [file:/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default/pinot-segment-uploader-default-1.0.0.jar]
+2024/02/19 23:15:24.125 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-segment-uploader-default] from dir [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default]
+2024/02/19 23:15:24.125 INFO [PluginManager] [main] Trying to load plugin [pinot-yammer] from location [/opt/pinot/plugins/pinot-metrics/pinot-yammer]
+2024/02/19 23:15:24.125 INFO [PluginManager] [main] Successfully loaded plugin [pinot-yammer] from jar files: [file:/opt/pinot/plugins/pinot-metrics/pinot-yammer/pinot-yammer-1.0.0-shaded.jar]
+2024/02/19 23:15:24.125 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-yammer] from dir [/opt/pinot/plugins/pinot-metrics/pinot-yammer]
+2024/02/19 23:15:24.125 INFO [PluginManager] [main] Trying to load plugin [pinot-thrift] from location [/opt/pinot/plugins/pinot-input-format/pinot-thrift]
+2024/02/19 23:15:24.125 INFO [PluginManager] [main] Successfully loaded plugin [pinot-thrift] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-thrift/pinot-thrift-1.0.0-shaded.jar]
+2024/02/19 23:15:24.125 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-thrift] from dir [/opt/pinot/plugins/pinot-input-format/pinot-thrift]
+2024/02/19 23:15:24.126 INFO [PluginManager] [main] Trying to load plugin [pinot-confluent-avro] from location [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro]
+2024/02/19 23:15:24.126 INFO [PluginManager] [main] Successfully loaded plugin [pinot-confluent-avro] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro/pinot-confluent-avro-1.0.0-shaded.jar]
+2024/02/19 23:15:24.126 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-confluent-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro]
+2024/02/19 23:15:24.126 INFO [PluginManager] [main] Trying to load plugin [pinot-batch-ingestion-standalone] from location [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone]
+2024/02/19 23:15:24.126 INFO [PluginManager] [main] Successfully loaded plugin [pinot-batch-ingestion-standalone] from jar files: [file:/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone/pinot-batch-ingestion-standalone-1.0.0-shaded.jar]
+2024/02/19 23:15:24.126 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-batch-ingestion-standalone] from dir [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone]
+2024/02/19 23:15:24.126 INFO [PluginManager] [main] Trying to load plugin [pinot-orc] from location [/opt/pinot/plugins/pinot-input-format/pinot-orc]
+2024/02/19 23:15:24.127 INFO [PluginManager] [main] Successfully loaded plugin [pinot-orc] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-orc/pinot-orc-1.0.0-shaded.jar]
+2024/02/19 23:15:24.127 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-orc] from dir [/opt/pinot/plugins/pinot-input-format/pinot-orc]
+2024/02/19 23:15:24.127 INFO [PluginManager] [main] Trying to load plugin [pinot-pulsar] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar]
+2024/02/19 23:15:24.127 INFO [PluginManager] [main] Successfully loaded plugin [pinot-pulsar] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar/pinot-pulsar-1.0.0-shaded.jar]
+2024/02/19 23:15:24.127 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-pulsar] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar]
+2024/02/19 23:15:24.127 INFO [PluginManager] [main] Trying to load plugin [pinot-clp-log] from location [/opt/pinot/plugins/pinot-input-format/pinot-clp-log]
+2024/02/19 23:15:24.128 INFO [PluginManager] [main] Successfully loaded plugin [pinot-clp-log] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-clp-log/pinot-clp-log-1.0.0-shaded.jar]
+2024/02/19 23:15:24.128 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-clp-log] from dir [/opt/pinot/plugins/pinot-input-format/pinot-clp-log]
+2024/02/19 23:15:24.128 INFO [PluginManager] [main] Trying to load plugin [pinot-dropwizard] from location [/opt/pinot/plugins/pinot-metrics/pinot-dropwizard]
+2024/02/19 23:15:24.128 INFO [PluginManager] [main] Successfully loaded plugin [pinot-dropwizard] from jar files: [file:/opt/pinot/plugins/pinot-metrics/pinot-dropwizard/pinot-dropwizard-1.0.0-shaded.jar]
+2024/02/19 23:15:24.128 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-dropwizard] from dir [/opt/pinot/plugins/pinot-metrics/pinot-dropwizard]
+2024/02/19 23:15:24.128 INFO [PluginManager] [main] Trying to load plugin [pinot-gcs] from location [/opt/pinot/plugins/pinot-file-system/pinot-gcs]
+2024/02/19 23:15:24.128 INFO [PluginManager] [main] Successfully loaded plugin [pinot-gcs] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-gcs/pinot-gcs-1.0.0-shaded.jar]
+2024/02/19 23:15:24.128 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-gcs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-gcs]
+2024/02/19 23:15:24.128 INFO [PluginManager] [main] Trying to load plugin [pinot-azure] from location [/opt/pinot/plugins/pinot-environment/pinot-azure]
+2024/02/19 23:15:24.129 INFO [PluginManager] [main] Successfully loaded plugin [pinot-azure] from jar files: [file:/opt/pinot/plugins/pinot-environment/pinot-azure/pinot-azure-1.0.0-shaded.jar]
+2024/02/19 23:15:24.129 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-azure] from dir [/opt/pinot/plugins/pinot-environment/pinot-azure]
+2024/02/19 23:15:24.129 INFO [PluginManager] [main] Trying to load plugin [pinot-hdfs] from location [/opt/pinot/plugins/pinot-file-system/pinot-hdfs]
+2024/02/19 23:15:24.129 INFO [PluginManager] [main] Successfully loaded plugin [pinot-hdfs] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-hdfs/pinot-hdfs-1.0.0-shaded.jar]
+2024/02/19 23:15:24.129 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-hdfs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-hdfs]
+2024/02/19 23:15:24.129 INFO [PluginManager] [main] Trying to load plugin [pinot-kinesis] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis]
+2024/02/19 23:15:24.130 INFO [PluginManager] [main] Successfully loaded plugin [pinot-kinesis] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis/pinot-kinesis-1.0.0-shaded.jar]
+2024/02/19 23:15:24.130 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-kinesis] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis]
+2024/02/19 23:15:24.130 INFO [PluginManager] [main] Trying to load plugin [pinot-adls] from location [/opt/pinot/plugins/pinot-file-system/pinot-adls]
+2024/02/19 23:15:24.130 INFO [PluginManager] [main] Successfully loaded plugin [pinot-adls] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-adls/pinot-adls-1.0.0-shaded.jar]
+2024/02/19 23:15:24.130 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-adls] from dir [/opt/pinot/plugins/pinot-file-system/pinot-adls]
+2024/02/19 23:15:24.130 INFO [PluginManager] [main] Trying to load plugin [pinot-minion-builtin-tasks] from location [/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks]
+2024/02/19 23:15:24.131 INFO [PluginManager] [main] Successfully loaded plugin [pinot-minion-builtin-tasks] from jar files: [file:/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks/pinot-minion-builtin-tasks-1.0.0.jar]
+2024/02/19 23:15:24.131 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-minion-builtin-tasks] from dir [/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks]
+2024/02/19 23:15:24.131 INFO [PluginManager] [main] Trying to load plugin [pinot-json] from location [/opt/pinot/plugins/pinot-input-format/pinot-json]
+2024/02/19 23:15:24.131 INFO [PluginManager] [main] Successfully loaded plugin [pinot-json] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-json/pinot-json-1.0.0-shaded.jar]
+2024/02/19 23:15:24.131 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-json] from dir [/opt/pinot/plugins/pinot-input-format/pinot-json]
+2024/02/19 23:15:24.131 INFO [PluginManager] [main] Trying to load plugin [pinot-parquet] from location [/opt/pinot/plugins/pinot-input-format/pinot-parquet]
+2024/02/19 23:15:24.131 INFO [PluginManager] [main] Successfully loaded plugin [pinot-parquet] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-parquet/pinot-parquet-1.0.0-shaded.jar]
+2024/02/19 23:15:24.131 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-parquet] from dir [/opt/pinot/plugins/pinot-input-format/pinot-parquet]
+2024/02/19 23:15:24.132 INFO [PluginManager] [main] Trying to load plugin [pinot-segment-writer-file-based] from location [/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based]
+2024/02/19 23:15:24.132 INFO [PluginManager] [main] Successfully loaded plugin [pinot-segment-writer-file-based] from jar files: [file:/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based/pinot-segment-writer-file-based-1.0.0.jar]
+2024/02/19 23:15:24.132 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-segment-writer-file-based] from dir [/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based]
+2024/02/19 23:15:25.028 INFO [IngestionJobLauncher] [main] SegmentGenerationJobSpec: 
+{
+  "tlsSpec" : null,
+  "executionFrameworkSpec" : {
+    "name" : "standalone",
+    "segmentGenerationJobRunnerClassName" : "org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner",
+    "segmentTarPushJobRunnerClassName" : "org.apache.pinot.plugin.ingestion.batch.standalone.SegmentTarPushJobRunner",
+    "segmentUriPushJobRunnerClassName" : null,
+    "segmentMetadataPushJobRunnerClassName" : null,
+    "extraConfigs" : null
+  },
+  "pinotFSSpecs" : [ {
+    "scheme" : "file",
+    "className" : "org.apache.pinot.spi.filesystem.LocalPinotFS",
+    "configs" : null
+  } ],
+  "failOnEmptySegment" : false,
+  "inputDirURI" : "/scrips/rawdata",
+  "includeFileNamePattern" : "glob:**/movies.jsonl",
+  "outputDirURI" : "/scripts/",
+  "cleanUpOutputDir" : false,
+  "overwriteOutput" : true,
+  "jobType" : "SegmentCreationAndTarPush",
+  "recordReaderSpec" : {
+    "className" : "org.apache.pinot.plugin.inputformat.json.JSONRecordReader",
+    "dataFormat" : "json",
+    "configClassName" : null,
+    "configs" : null
+  },
+  "tableSpec" : {
+    "tableName" : "movies",
+    "schemaURI" : null,
+    "tableConfigURI" : null
+  },
+  "segmentNameGeneratorSpec" : null,
+  "pinotClusterSpecs" : [ {
+    "controllerURI" : "http://localhost:9000"
+  } ],
+  "pushJobSpec" : {
+    "pushAttempts" : 2,
+    "pushRetryIntervalMillis" : 1000,
+    "preferMetadataTarGz" : true,
+    "pushFileNamePattern" : null,
+    "segmentUriPrefix" : null,
+    "segmentUriSuffix" : null,
+    "pushParallelism" : 2,
+    "copyToDeepStoreForMetadataPush" : false
+  },
+  "searchRecursively" : true,
+  "excludeFileNamePattern" : null,
+  "segmentCreationJobParallelism" : 0,
+  "createMetadataTarGz" : false
+}
+2024/02/19 23:15:25.029 INFO [IngestionJobLauncher] [main] Trying to create instance for class org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner
+2024/02/19 23:15:25.048 INFO [PinotFSFactory] [main] Initializing PinotFS for scheme file, classname org.apache.pinot.spi.filesystem.LocalPinotFS
+2024/02/19 23:15:25.427 INFO [SegmentPushUtils] [main] Consistent data push is: disabled
+2024/02/19 23:15:25.428 INFO [SegmentGenerationJobRunner] [main] Creating an executor serv2024/02/19 23:15:59.878 INFO [PluginManager] [main] Plugin directories env: /opt/pinot/plugins, parsed directories to load: '[/opt/pinot/plugins]'
+2024/02/19 23:15:59.890 INFO [PluginManager] [main] Please use env variable 'plugins.include' to customize plugins to load. Loading all plugins: [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar/pinot-pulsar-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0/pinot-kafka-2.0-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis/pinot-kinesis-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default/pinot-segment-uploader-default-1.0.0.jar, /opt/pinot/plugins/pinot-metrics/pinot-yammer/pinot-yammer-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-metrics/pinot-dropwizard/pinot-dropwizard-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks/pinot-minion-builtin-tasks-1.0.0.jar, /opt/pinot/plugins/pinot-file-system/pinot-s3/pinot-s3-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-hdfs/pinot-hdfs-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-gcs/pinot-gcs-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-file-system/pinot-adls/pinot-adls-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based/pinot-segment-writer-file-based-1.0.0.jar, /opt/pinot/plugins/pinot-input-format/pinot-avro/pinot-avro-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-json/pinot-json-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-thrift/pinot-thrift-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-parquet/pinot-parquet-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-confluent-avro/pinot-confluent-avro-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-csv/pinot-csv-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-protobuf/pinot-protobuf-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-clp-log/pinot-clp-log-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-input-format/pinot-orc/pinot-orc-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-environment/pinot-azure/pinot-azure-1.0.0-shaded.jar, /opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone/pinot-batch-ingestion-standalone-1.0.0-shaded.jar]
+2024/02/19 23:15:59.890 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar, pluginName: pinot-pulsar
+2024/02/19 23:15:59.890 INFO [PluginManager] [main] Added [pinot-pulsar] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar] to final list of plugins to load
+2024/02/19 23:15:59.890 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0, pluginName: pinot-kafka-2.0
+2024/02/19 23:15:59.890 INFO [PluginManager] [main] Added [pinot-kafka-2.0] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0] to final list of plugins to load
+2024/02/19 23:15:59.890 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis, pluginName: pinot-kinesis
+2024/02/19 23:15:59.890 INFO [PluginManager] [main] Added [pinot-kinesis] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis] to final list of plugins to load
+2024/02/19 23:15:59.890 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default, pluginName: pinot-segment-uploader-default
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Added [pinot-segment-uploader-default] from dir [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default] to final list of plugins to load
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-metrics/pinot-yammer, pluginName: pinot-yammer
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Added [pinot-yammer] from dir [/opt/pinot/plugins/pinot-metrics/pinot-yammer] to final list of plugins to load
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-metrics/pinot-dropwizard, pluginName: pinot-dropwizard
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Added [pinot-dropwizard] from dir [/opt/pinot/plugins/pinot-metrics/pinot-dropwizard] to final list of plugins to load
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks, pluginName: pinot-minion-builtin-tasks
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Added [pinot-minion-builtin-tasks] from dir [/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks] to final list of plugins to load
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-s3, pluginName: pinot-s3
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Added [pinot-s3] from dir [/opt/pinot/plugins/pinot-file-system/pinot-s3] to final list of plugins to load
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-hdfs, pluginName: pinot-hdfs
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Added [pinot-hdfs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-hdfs] to final list of plugins to load
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-gcs, pluginName: pinot-gcs
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Added [pinot-gcs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-gcs] to final list of plugins to load
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-file-system/pinot-adls, pluginName: pinot-adls
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Added [pinot-adls] from dir [/opt/pinot/plugins/pinot-file-system/pinot-adls] to final list of plugins to load
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based, pluginName: pinot-segment-writer-file-based
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Added [pinot-segment-writer-file-based] from dir [/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based] to final list of plugins to load
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-avro, pluginName: pinot-avro
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Added [pinot-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-avro] to final list of plugins to load
+2024/02/19 23:15:59.891 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-json, pluginName: pinot-json
+2024/02/19 23:15:59.892 INFO [PluginManager] [main] Added [pinot-json] from dir [/opt/pinot/plugins/pinot-input-format/pinot-json] to final list of plugins to load
+2024/02/19 23:15:59.892 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-thrift, pluginName: pinot-thrift
+2024/02/19 23:15:59.892 INFO [PluginManager] [main] Added [pinot-thrift] from dir [/opt/pinot/plugins/pinot-input-format/pinot-thrift] to final list of plugins to load
+2024/02/19 23:15:59.892 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-parquet, pluginName: pinot-parquet
+2024/02/19 23:15:59.892 INFO [PluginManager] [main] Added [pinot-parquet] from dir [/opt/pinot/plugins/pinot-input-format/pinot-parquet] to final list of plugins to load
+2024/02/19 23:15:59.892 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-confluent-avro, pluginName: pinot-confluent-avro
+2024/02/19 23:15:59.892 INFO [PluginManager] [main] Added [pinot-confluent-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro] to final list of plugins to load
+2024/02/19 23:15:59.892 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-csv, pluginName: pinot-csv
+2024/02/19 23:15:59.892 INFO [PluginManager] [main] Added [pinot-csv] from dir [/opt/pinot/plugins/pinot-input-format/pinot-csv] to final list of plugins to load
+2024/02/19 23:15:59.892 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-protobuf, pluginName: pinot-protobuf
+2024/02/19 23:15:59.892 INFO [PluginManager] [main] Added [pinot-protobuf] from dir [/opt/pinot/plugins/pinot-input-format/pinot-protobuf] to final list of plugins to load
+2024/02/19 23:15:59.893 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-clp-log, pluginName: pinot-clp-log
+2024/02/19 23:15:59.893 INFO [PluginManager] [main] Added [pinot-clp-log] from dir [/opt/pinot/plugins/pinot-input-format/pinot-clp-log] to final list of plugins to load
+2024/02/19 23:15:59.893 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-input-format/pinot-orc, pluginName: pinot-orc
+2024/02/19 23:15:59.893 INFO [PluginManager] [main] Added [pinot-orc] from dir [/opt/pinot/plugins/pinot-input-format/pinot-orc] to final list of plugins to load
+2024/02/19 23:15:59.893 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-environment/pinot-azure, pluginName: pinot-azure
+2024/02/19 23:15:59.893 INFO [PluginManager] [main] Added [pinot-azure] from dir [/opt/pinot/plugins/pinot-environment/pinot-azure] to final list of plugins to load
+2024/02/19 23:15:59.893 INFO [PluginManager] [main] Found plugin, pluginDir: /opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone, pluginName: pinot-batch-ingestion-standalone
+2024/02/19 23:15:59.893 INFO [PluginManager] [main] Added [pinot-batch-ingestion-standalone] from dir [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone] to final list of plugins to load
+2024/02/19 23:15:59.893 INFO [PluginManager] [main] #getPluginsToLoad has produced 23 plugins to load
+2024/02/19 23:15:59.894 INFO [PluginManager] [main] Trying to load plugin [pinot-protobuf] from location [/opt/pinot/plugins/pinot-input-format/pinot-protobuf]
+2024/02/19 23:15:59.894 INFO [PluginManager] [main] Successfully loaded plugin [pinot-protobuf] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-protobuf/pinot-protobuf-1.0.0-shaded.jar]
+2024/02/19 23:15:59.894 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-protobuf] from dir [/opt/pinot/plugins/pinot-input-format/pinot-protobuf]
+2024/02/19 23:15:59.894 INFO [PluginManager] [main] Trying to load plugin [pinot-kafka-2.0] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0]
+2024/02/19 23:15:59.894 INFO [PluginManager] [main] Successfully loaded plugin [pinot-kafka-2.0] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0/pinot-kafka-2.0-1.0.0-shaded.jar]
+2024/02/19 23:15:59.894 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-kafka-2.0] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kafka-2.0]
+2024/02/19 23:15:59.894 INFO [PluginManager] [main] Trying to load plugin [pinot-avro] from location [/opt/pinot/plugins/pinot-input-format/pinot-avro]
+2024/02/19 23:15:59.895 INFO [PluginManager] [main] Successfully loaded plugin [pinot-avro] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-avro/pinot-avro-1.0.0-shaded.jar]
+2024/02/19 23:15:59.895 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-avro]
+2024/02/19 23:15:59.895 INFO [PluginManager] [main] Trying to load plugin [pinot-csv] from location [/opt/pinot/plugins/pinot-input-format/pinot-csv]
+2024/02/19 23:15:59.895 INFO [PluginManager] [main] Successfully loaded plugin [pinot-csv] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-csv/pinot-csv-1.0.0-shaded.jar]
+2024/02/19 23:15:59.895 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-csv] from dir [/opt/pinot/plugins/pinot-input-format/pinot-csv]
+2024/02/19 23:15:59.895 INFO [PluginManager] [main] Trying to load plugin [pinot-s3] from location [/opt/pinot/plugins/pinot-file-system/pinot-s3]
+2024/02/19 23:15:59.896 INFO [PluginManager] [main] Successfully loaded plugin [pinot-s3] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-s3/pinot-s3-1.0.0-shaded.jar]
+2024/02/19 23:15:59.896 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-s3] from dir [/opt/pinot/plugins/pinot-file-system/pinot-s3]
+2024/02/19 23:15:59.896 INFO [PluginManager] [main] Trying to load plugin [pinot-segment-uploader-default] from location [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default]
+2024/02/19 23:15:59.896 INFO [PluginManager] [main] Successfully loaded plugin [pinot-segment-uploader-default] from jar files: [file:/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default/pinot-segment-uploader-default-1.0.0.jar]
+2024/02/19 23:15:59.896 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-segment-uploader-default] from dir [/opt/pinot/plugins/pinot-segment-uploader/pinot-segment-uploader-default]
+2024/02/19 23:15:59.896 INFO [PluginManager] [main] Trying to load plugin [pinot-yammer] from location [/opt/pinot/plugins/pinot-metrics/pinot-yammer]
+2024/02/19 23:15:59.897 INFO [PluginManager] [main] Successfully loaded plugin [pinot-yammer] from jar files: [file:/opt/pinot/plugins/pinot-metrics/pinot-yammer/pinot-yammer-1.0.0-shaded.jar]
+2024/02/19 23:15:59.897 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-yammer] from dir [/opt/pinot/plugins/pinot-metrics/pinot-yammer]
+2024/02/19 23:15:59.897 INFO [PluginManager] [main] Trying to load plugin [pinot-thrift] from location [/opt/pinot/plugins/pinot-input-format/pinot-thrift]
+2024/02/19 23:15:59.897 INFO [PluginManager] [main] Successfully loaded plugin [pinot-thrift] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-thrift/pinot-thrift-1.0.0-shaded.jar]
+2024/02/19 23:15:59.897 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-thrift] from dir [/opt/pinot/plugins/pinot-input-format/pinot-thrift]
+2024/02/19 23:15:59.897 INFO [PluginManager] [main] Trying to load plugin [pinot-confluent-avro] from location [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro]
+2024/02/19 23:15:59.898 INFO [PluginManager] [main] Successfully loaded plugin [pinot-confluent-avro] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro/pinot-confluent-avro-1.0.0-shaded.jar]
+2024/02/19 23:15:59.898 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-confluent-avro] from dir [/opt/pinot/plugins/pinot-input-format/pinot-confluent-avro]
+2024/02/19 23:15:59.898 INFO [PluginManager] [main] Trying to load plugin [pinot-batch-ingestion-standalone] from location [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone]
+2024/02/19 23:15:59.898 INFO [PluginManager] [main] Successfully loaded plugin [pinot-batch-ingestion-standalone] from jar files: [file:/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone/pinot-batch-ingestion-standalone-1.0.0-shaded.jar]
+2024/02/19 23:15:59.899 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-batch-ingestion-standalone] from dir [/opt/pinot/plugins/pinot-batch-ingestion/pinot-batch-ingestion-standalone]
+2024/02/19 23:15:59.899 INFO [PluginManager] [main] Trying to load plugin [pinot-orc] from location [/opt/pinot/plugins/pinot-input-format/pinot-orc]
+2024/02/19 23:15:59.899 INFO [PluginManager] [main] Successfully loaded plugin [pinot-orc] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-orc/pinot-orc-1.0.0-shaded.jar]
+2024/02/19 23:15:59.899 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-orc] from dir [/opt/pinot/plugins/pinot-input-format/pinot-orc]
+2024/02/19 23:15:59.899 INFO [PluginManager] [main] Trying to load plugin [pinot-pulsar] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar]
+2024/02/19 23:15:59.900 INFO [PluginManager] [main] Successfully loaded plugin [pinot-pulsar] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar/pinot-pulsar-1.0.0-shaded.jar]
+2024/02/19 23:15:59.900 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-pulsar] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-pulsar]
+2024/02/19 23:15:59.900 INFO [PluginManager] [main] Trying to load plugin [pinot-clp-log] from location [/opt/pinot/plugins/pinot-input-format/pinot-clp-log]
+2024/02/19 23:15:59.901 INFO [PluginManager] [main] Successfully loaded plugin [pinot-clp-log] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-clp-log/pinot-clp-log-1.0.0-shaded.jar]
+2024/02/19 23:15:59.901 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-clp-log] from dir [/opt/pinot/plugins/pinot-input-format/pinot-clp-log]
+2024/02/19 23:15:59.901 INFO [PluginManager] [main] Trying to load plugin [pinot-dropwizard] from location [/opt/pinot/plugins/pinot-metrics/pinot-dropwizard]
+2024/02/19 23:15:59.902 INFO [PluginManager] [main] Successfully loaded plugin [pinot-dropwizard] from jar files: [file:/opt/pinot/plugins/pinot-metrics/pinot-dropwizard/pinot-dropwizard-1.0.0-shaded.jar]
+2024/02/19 23:15:59.902 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-dropwizard] from dir [/opt/pinot/plugins/pinot-metrics/pinot-dropwizard]
+2024/02/19 23:15:59.902 INFO [PluginManager] [main] Trying to load plugin [pinot-gcs] from location [/opt/pinot/plugins/pinot-file-system/pinot-gcs]
+2024/02/19 23:15:59.902 INFO [PluginManager] [main] Successfully loaded plugin [pinot-gcs] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-gcs/pinot-gcs-1.0.0-shaded.jar]
+2024/02/19 23:15:59.902 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-gcs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-gcs]
+2024/02/19 23:15:59.902 INFO [PluginManager] [main] Trying to load plugin [pinot-azure] from location [/opt/pinot/plugins/pinot-environment/pinot-azure]
+2024/02/19 23:15:59.902 INFO [PluginManager] [main] Successfully loaded plugin [pinot-azure] from jar files: [file:/opt/pinot/plugins/pinot-environment/pinot-azure/pinot-azure-1.0.0-shaded.jar]
+2024/02/19 23:15:59.902 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-azure] from dir [/opt/pinot/plugins/pinot-environment/pinot-azure]
+2024/02/19 23:15:59.902 INFO [PluginManager] [main] Trying to load plugin [pinot-hdfs] from location [/opt/pinot/plugins/pinot-file-system/pinot-hdfs]
+2024/02/19 23:15:59.903 INFO [PluginManager] [main] Successfully loaded plugin [pinot-hdfs] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-hdfs/pinot-hdfs-1.0.0-shaded.jar]
+2024/02/19 23:15:59.903 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-hdfs] from dir [/opt/pinot/plugins/pinot-file-system/pinot-hdfs]
+2024/02/19 23:15:59.903 INFO [PluginManager] [main] Trying to load plugin [pinot-kinesis] from location [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis]
+2024/02/19 23:15:59.903 INFO [PluginManager] [main] Successfully loaded plugin [pinot-kinesis] from jar files: [file:/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis/pinot-kinesis-1.0.0-shaded.jar]
+2024/02/19 23:15:59.903 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-kinesis] from dir [/opt/pinot/plugins/pinot-stream-ingestion/pinot-kinesis]
+2024/02/19 23:15:59.903 INFO [PluginManager] [main] Trying to load plugin [pinot-adls] from location [/opt/pinot/plugins/pinot-file-system/pinot-adls]
+2024/02/19 23:15:59.903 INFO [PluginManager] [main] Successfully loaded plugin [pinot-adls] from jar files: [file:/opt/pinot/plugins/pinot-file-system/pinot-adls/pinot-adls-1.0.0-shaded.jar]
+2024/02/19 23:15:59.903 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-adls] from dir [/opt/pinot/plugins/pinot-file-system/pinot-adls]
+2024/02/19 23:15:59.903 INFO [PluginManager] [main] Trying to load plugin [pinot-minion-builtin-tasks] from location [/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks]
+2024/02/19 23:15:59.904 INFO [PluginManager] [main] Successfully loaded plugin [pinot-minion-builtin-tasks] from jar files: [file:/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks/pinot-minion-builtin-tasks-1.0.0.jar]
+2024/02/19 23:15:59.904 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-minion-builtin-tasks] from dir [/opt/pinot/plugins/pinot-minion-tasks/pinot-minion-builtin-tasks]
+2024/02/19 23:15:59.904 INFO [PluginManager] [main] Trying to load plugin [pinot-json] from location [/opt/pinot/plugins/pinot-input-format/pinot-json]
+2024/02/19 23:15:59.904 INFO [PluginManager] [main] Successfully loaded plugin [pinot-json] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-json/pinot-json-1.0.0-shaded.jar]
+2024/02/19 23:15:59.904 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-json] from dir [/opt/pinot/plugins/pinot-input-format/pinot-json]
+2024/02/19 23:15:59.904 INFO [PluginManager] [main] Trying to load plugin [pinot-parquet] from location [/opt/pinot/plugins/pinot-input-format/pinot-parquet]
+2024/02/19 23:15:59.904 INFO [PluginManager] [main] Successfully loaded plugin [pinot-parquet] from jar files: [file:/opt/pinot/plugins/pinot-input-format/pinot-parquet/pinot-parquet-1.0.0-shaded.jar]
+2024/02/19 23:15:59.904 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-parquet] from dir [/opt/pinot/plugins/pinot-input-format/pinot-parquet]
+2024/02/19 23:15:59.904 INFO [PluginManager] [main] Trying to load plugin [pinot-segment-writer-file-based] from location [/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based]
+2024/02/19 23:15:59.905 INFO [PluginManager] [main] Successfully loaded plugin [pinot-segment-writer-file-based] from jar files: [file:/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based/pinot-segment-writer-file-based-1.0.0.jar]
+2024/02/19 23:15:59.905 INFO [PluginManager] [main] Successfully Loaded plugin [pinot-segment-writer-file-based] from dir [/opt/pinot/plugins/pinot-segment-writer/pinot-segment-writer-file-based]
+2024/02/19 23:16:00.731 INFO [IngestionJobLauncher] [main] SegmentGenerationJobSpec: 
+{
+  "tlsSpec" : null,
+  "executionFrameworkSpec" : {
+    "name" : "standalone",
+    "segmentGenerationJobRunnerClassName" : "org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner",
+    "segmentTarPushJobRunnerClassName" : "org.apache.pinot.plugin.ingestion.batch.standalone.SegmentTarPushJobRunner",
+    "segmentUriPushJobRunnerClassName" : null,
+    "segmentMetadataPushJobRunnerClassName" : null,
+    "extraConfigs" : null
+  },
+  "pinotFSSpecs" : [ {
+    "scheme" : "file",
+    "className" : "org.apache.pinot.spi.filesystem.LocalPinotFS",
+    "configs" : null
+  } ],
+  "failOnEmptySegment" : false,
+  "inputDirURI" : "/scripts/rawdata",
+  "includeFileNamePattern" : "glob:**/movies.jsonl",
+  "outputDirURI" : "/scripts/",
+  "cleanUpOutputDir" : false,
+  "overwriteOutput" : true,
+  "jobType" : "SegmentCreationAndTarPush",
+  "recordReaderSpec" : {
+    "className" : "org.apache.pinot.plugin.inputformat.json.JSONRecordReader",
+    "dataFormat" : "json",
+    "configClassName" : null,
+    "configs" : null
+  },
+  "tableSpec" : {
+    "tableName" : "movies",
+    "schemaURI" : null,
+    "tableConfigURI" : null
+  },
+  "segmentNameGeneratorSpec" : null,
+  "pinotClusterSpecs" : [ {
+    "controllerURI" : "http://localhost:9000"
+  } ],
+  "pushJobSpec" : {
+    "pushAttempts" : 2,
+    "pushRetryIntervalMillis" : 1000,
+    "preferMetadataTarGz" : true,
+    "pushFileNamePattern" : null,
+    "segmentUriPrefix" : null,
+    "segmentUriSuffix" : null,
+    "pushParallelism" : 2,
+    "copyToDeepStoreForMetadataPush" : false
+  },
+  "searchRecursively" : true,
+  "excludeFileNamePattern" : null,
+  "segmentCreationJobParallelism" : 0,
+  "createMetadataTarGz" : false
+}
+2024/02/19 23:16:00.732 INFO [IngestionJobLauncher] [main] Trying to create instance for class org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner
+2024/02/19 23:16:00.752 INFO [PinotFSFactory] [main] Initializing PinotFS for scheme file, classname org.apache.pinot.spi.filesystem.LocalPinotFS
+2024/02/19 23:16:01.153 INFO [SegmentPushUtils] [main] Consistent data push is: disabled
+2024/02/19 23:16:01.153 INFO [SegmentGenerationJobRunner] [main] Creating an executor ser
