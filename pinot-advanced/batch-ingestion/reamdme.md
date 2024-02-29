@@ -39,7 +39,16 @@ FROM FILE 's3://bhdemo/movies.csv'
 
 ### Ingest using API
 
+Let's ingest the data using API.
 
+- Navigate to the rawdata folder containing the movies.csv file
+- Run the following command:
+
+``` sh
+curl -X POST -F file=movies.csv  -H "Content-Type: multipart/form-data"  "http://localhost:9000/ingestFromFile?tableNameWithType=movies_OFFLINE&batchConfigMapStr=%7B%22inputFormat%22:%22csv%22,%22recordReader.prop.delimiter%22:%22,%22%7D"
+```
+
+- Make sure the recods were ingested.
 
 ### Ingest using CLI
 
