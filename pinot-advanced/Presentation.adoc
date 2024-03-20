@@ -1551,6 +1551,28 @@ bin/pinot-admin.sh StartMinion -zkAddress localhost:2181
 
 == Minion Tasks
 
+There are three built in tasks that Minion can perform:
+* SegmentGenerationAndPushTask
+* RealtimeToOfflineSegmentsTask
+* MergeRollupTask
+
+== Segment Generation and Push Task
+
+The Segment generation push task is to load segments to ofile tables.  It pushes files for data store such as s3 to Pinot segments.
+
+image::images/Minion-1.png[]
+
+== Realtime to Offline Segments Task
+
+The Realtime to Offline Segments Task is to convert Realtime segments to Offline segments.  
+
+imege::images/Minion-2.png[]
+
+== Merge Rollup Task
+
+The merge rollup task is designe to merge smaller segments to one larger segment. This can be used only for append only offline tables and  realtime tables without upsert and dedupe.
+
+image::images/Minion-3.png[]
 
 ==  Exercise: Minion Tasks
 
