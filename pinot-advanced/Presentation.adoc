@@ -1566,7 +1566,7 @@ image::images/Minion-1.png[]
 
 The Realtime to Offline Segments Task is to convert Realtime segments to Offline segments.  
 
-imege::images/Minion-2.png[]
+image::images/Minion-2.png[]
 
 == Merge Rollup Task
 
