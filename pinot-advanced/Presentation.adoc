@@ -126,15 +126,15 @@ Pinot Controller’s configuration defines the following:
 [source]
 ----
 pinot-controller:
-    image: apachepinot/pinot:1.0.0      <1>
-    command: "StartController -zkAddress zookeeper:2181"   <2>
-    container_name: "pinot-controller"      <3>
-    restart: unless-stopped         <4> 
-    ports:                        <5>   
+    image: apachepinot/pinot:1.0.0                          <1>
+    command: "StartController -zkAddress zookeeper:2181"    <2>
+    container_name: "pinot-controller"                      <3>
+    restart: unless-stopped                                 <4> 
+    ports:                                                  <5>   
       - "9000:9000"
-    depends_on:              <6>    
+    depends_on:                                             <6>    
       - zookeeper
-    networks:               <7> 
+    networks:                                               <7> 
       - pinot-advanced
 
 ----
@@ -154,13 +154,13 @@ Pinot Server’s configuration defines:
 [source]
 ----
 pinot-server:
-    image: apachepinot/pinot:1.0.0          <1>
+    image: apachepinot/pinot:1.0.0                      <1>
     command: "StartServer -zkAddress zookeeper:2181"    <2>
-    restart: unless-stopped     <3>
-    container_name: "pinot-server"          <4>
-    depends_on:                                 <5>
+    restart: unless-stopped                             <3>
+    container_name: "pinot-server"                      <4>
+    depends_on:                                         <5>
       - pinot-broker
-    networks:                                       <6>
+    networks:                                           <6>
       - pinot-advanced
 ----
 <1> Image version
@@ -194,7 +194,7 @@ Cluster configuration defines the following:
 ====
 
 == Exercise 1: Deploying a Pinot Cluster
-[cols="1,1"]
+[cols="1,5"]
 |===
 a|image::images/plus.png[]
 |In this exercise, we will create an Apache Pinot Cluster using Docker Compose.
@@ -304,7 +304,7 @@ The content of the sample-broker-tenant.json:
 ----
 
 == Exercise: Create Tenant
-[cols="1,1"]
+[cols="1,5"]
 |===
 a|image::images/plus.png[]
 |In this exercise, we will create a tenant using CLI & API.
@@ -324,11 +324,11 @@ Pinot supports three types of tables:
 
 [cols="1,1,1"]
 |===
-a|Offline
+a|*Offline* +
 Offline tables ingest static data from external data stores and are generally used for batch ingestion.
-a|Hybrid
+a|*Hybrid* _
 Hybrid Pinot tables have both real-time as well as offline tables under the hood. By default, all tables in Pinot are hybrid.
-a|Real-time
+a|*Real-time* +
 Real-time tables ingest data from streams (such as Kafka) and build segments from the consumed data.
 |===
 
@@ -516,16 +516,16 @@ To configure a table as dimension table:
 },
   "metadata": {},
   "quota": {  "storage": "200M"  },
-  "isDimTable": true           <2>
+  "isDimTable": true                  <2>
     }
   "dimensionTableConfig": {
-  "disablePreload": true      <3>
+  "disablePreload": true              <3>
     }
   }
 }
 ...
 {
-  "dimensionFieldSpecs": [      <4>
+  "dimensionFieldSpecs": [            <4>
   {
     "dataType": "STRING",
     "name": "teamID"
@@ -540,7 +540,7 @@ To configure a table as dimension table:
 ====
 
 == Exercise: Add Schema & Table
-[cols="1,1"]
+[cols="1,5"]
 |===
 a|image::images/plus.png[]
 |In this exercise, we will create a schema and tables using CLI, API & UI.
@@ -623,9 +623,9 @@ This section defines ingestion jobs to be running, and the framework used.
 ----
 executionFrameworkSpec:
  name: 'standalone'
- segmentGenerationJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.  SegmentGenerationJobRunner' #<1>
- segmentTarPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentTarPushJobRunner' #<2>
- segmentUriPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentUriPushJobRunner' #<3>
+ segmentGenerationJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.  SegmentGenerationJobRunner'   #<1>
+ segmentTarPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentTarPushJobRunner'           #<2>
+ segmentUriPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentUriPushJobRunner'           #<3>
  segmentMetadataPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentMetadataPushJobRunner' #<4>
 ----
 <1> Segment created using files
@@ -642,9 +642,9 @@ Record Reader Spec defines the data type to be ingested.
 # recordReaderSpec: defines all record reader
 recordReaderSpec:
 # dataFormat: Record data format, e.g. 'avro', 'parquet', 'orc',etc.
-dataFormat: 'csv'     # <1>
+dataFormat: 'csv'                                                                     # <1>
 # className: Corresponding RecordReader class name.
-className: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReader'      # <2>
+className: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReader'                  # <2>
 # configClassName: Corresponding RecordReaderConfig class name
 # E.g.org.apache.pinot.plugin.inputformat.csv.CSVRecordReaderConfig
 configClassName: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReaderConfig'      # <3>
@@ -708,9 +708,9 @@ The JobSpec file defines the input and output directories.
 [source, yaml]
 ----
 # inputDirURI: Root directory of input data, expected to have scheme configured in PinotFS.
-inputDirURI: 'examples/batch/baseballStats/rawdata' #<1>
+inputDirURI: 'examples/batch/baseballStats/rawdata'   #<1>
 # includeFileNamePattern: include file name pattern, supported glob pattern.
-includeFileNamePattern: 'glob:**/*.csv' #<2>
+includeFileNamePattern: 'glob:**/*.csv'               #<2>
 # excludeFileNamePattern: exclude file name pattern, supported glob pattern.
 # _excludeFileNamePattern: ''
 # outputDirURI: Root directory of output segments, expected to have scheme configured in PinotFS.
@@ -735,7 +735,7 @@ The JobSpec file defines the file system to be used.
 pinotFSSpecs:
 # scheme: used to identify a PinotFS.
 # E.g. local, hdfs, dbfs, etc
-scheme: file  #<1>
+scheme: file                                            #<1>
 # className: Class name used to create the PinotFS instance.
 # E.g.
 # org.apache.pinot.spi.filesystem.LocalPinotFS is used for local filesystem
@@ -757,12 +757,12 @@ The JobSpec file defines the table to be used.
 # tableSpec: defines table name and where to fetch corresponding table config and table schema.
 tableSpec:
 # tableName: Table name
-tableName: 'baseballStats'  #<1>
+tableName: 'baseballStats'                                      #<1>
 # schemaURI: defines where to read the table schema, PinotFS or HTTP.
 schemaURI: 'http://localhost:9000/tables/baseballStats/schema'  #<2>
 # tableConfigURI: defines where to reade the table config.
 # Supports using PinotFS or HTTP.
-tableConfigURI: 'http://localhost:9000/tables/baseballStats'  #<3>
+tableConfigURI: 'http://localhost:9000/tables/baseballStats'    #<3>
 ----
 <1> Table name
 <2> Schema URI
@@ -809,10 +809,10 @@ pushAttempts: 2 #<1>
 ----
 SET taskName = 'myTask-s3';
 SET input.fs.className = 'org.apache.pinot.plugin.filesystem.S3PinotFS';
-SET input.fs.prop.accessKey = '<my-key>';   --<1>
-SET input.fs.prop.secretKey = '<my-secret>';  --<2>
-SET input.fs.prop.region = 'us-west-2'; --<3>
-INSERT INTO "baseballStats"               --<4>
+SET input.fs.prop.accessKey = '<my-key>';                         --<1>
+SET input.fs.prop.secretKey = '<my-secret>';                      --<2>
+SET input.fs.prop.region = 'us-west-2';                           --<3>
+INSERT INTO "baseballStats"                                       --<4>
 FROM FILE 's3://my-bucket/public_data_set/baseballStats/rawdata/' --<5>
 ----
 <1> Your Access Key for the s3 account
@@ -906,8 +906,8 @@ Kinesis ingestion can be specified in the Table config file for Real-time tables
 ----
 "streamConfigs":
 {
-  "streamType": "kinesis",          <1>
-  "stream.kinesis.topic.name": "<stream name>", <2>
+  "streamType": "kinesis",                        <1>
+  "stream.kinesis.topic.name": "<stream name>",   <2>
     "region": "<your region>",
     "accessKey": "<your access key>",
     "secretKey": "<your secret key>",
@@ -933,8 +933,8 @@ Pulsar ingestion can be specified in the Table config file  for Real-time tables
 [source]
 ----
 "streamConfigs": {
-      "streamType": "pulsar",     <1>
-      "stream.pulsar.topic.name": "<your pulsar topic name>",   <2>
+      "streamType": "pulsar",                                                               <1>
+      "stream.pulsar.topic.name": "<your pulsar topic name>",                               <2>
       "stream.pulsar.bootstrap.servers": "pulsar://localhost:6650,pulsar://localhost:6651", <3>
       "stream.pulsar.consumer.prop.auto.offset.reset" : "smallest",
       "stream.pulsar.consumer.type": "lowlevel",
@@ -1048,7 +1048,6 @@ FROM MyTable WHERE COL3 > 50
 ** avgValueIntegerSumTupleSketch
 ** distinctCountTupleSketch
 ** distinctCountRawIntegerSumTupleSketch
-* Functions Supported for CE:
 ** sumValueIntegerSumTupleSketch
 ** distinctCountCpcSketch
 ** distinctCountRawCpcSketch
@@ -1101,7 +1100,7 @@ group by P_BRAND1
 
 ==  Exercise: Ingest Data
 
-[cols="1,1"]
+[cols="1,5"]
 |===
 a|image::images/plus.png[]
 |In this exercise, we will use some queries to explore the capabilities of the v1 and v2 query engines.
@@ -1161,10 +1160,10 @@ To use partial upserts, a strategy must be defined:
 ----
 {
 "upsertConfig": {
-  "mode": "PARTIAL",        <1>
+  "mode": "PARTIAL",                            <1>
   "defaultPartialUpsertStrategy": "OVERWRITE",  <2>
-  "partialUpsertStrategies":{   <3>
-    "rsvp_count": "INCREMENT",  <4>
+  "partialUpsertStrategies":{                   <3>
+    "rsvp_count": "INCREMENT",                  <4>
     "group_name": "IGNORE"
   }
 },
@@ -1181,7 +1180,7 @@ To use partial upserts, a strategy must be defined:
 
 == Excercise: Upserts
 
-[cols="1,1"]
+[cols="1,5"]
 |===
 a|image::images/plus.png[]
 |In this exercise, we will create a table for stream ingestion with upsert and ingest data using CLI & API.
@@ -1513,7 +1512,7 @@ SELECT COUNT(*) FROM Foo WHERE TEXT_CONTAINS (<column_name>, "foo.*")
 
 ==  Exercise: Indexes
 
-[cols="1,1"]
+[cols="1,5"]
 |===
 a|image::images/plus.png[]
 |In this exercise, we create some indexes to see how they improve performance.
@@ -1555,7 +1554,7 @@ bin/pinot-admin.sh StartMinion -zkAddress localhost:2181
 
 ==  Exercise: Minion Tasks
 
-[cols="1,1"]
+[cols="1,5"]
 |===
 a|image::images/plus.png[]
 |In this exercise, we will create an Apache Pinot Cluster with Minion using Docker Compose, and run Minion Tasks
