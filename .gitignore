@@ -1,0 +1,4 @@
+*.tar
+2021-07-14*.json
+.vscode
+settings.json
