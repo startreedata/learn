@@ -4,7 +4,7 @@ This folder contains the code for creating a Apache Pinot Cluster and adding sch
 
 ## The Execises
 
-The exercise  include:
+The exercise includes:
 
 - Add schema and table using API
 - Add schema and table using CLI
@@ -14,7 +14,7 @@ The exercise  include:
 ## Run the compose file
 
 ``` bash
-docker-compose -f docker-compose.yml up
+docker-compose up -d
 ```
 
 ## Launching the UI
@@ -31,7 +31,6 @@ In this excercise, we will create a schema and a offline table using API.
 - Paste the following code and hit enter:
 
 ``` json
-
 {
     "metricFieldSpecs": [
     ],
@@ -577,6 +576,14 @@ Make sure:
 - 3 Schemas are created
 - 3 Tables are created
 
+## Teardwon
+
+To tear down the cluster, runn the docker compose down command as
+
+``` bash
+docker-compose down
+```
+
 ## Success
 
-There! You've just created three tables!
+There! You've just created three tables in a Pinot Cluster!
