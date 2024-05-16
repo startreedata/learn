@@ -525,12 +525,12 @@ In this excercise, we will create a schema and a offline table using API.
 
 In this exercise, we will use the CLI to create a schema and table.
 
-First, using either the Docker Desktop or docker command line, join the pinot-controller shell.
+Using the terminal, run the following scripts:
 
-Navigate to the scripts folder:
-
-```sh
-cd scripts
+```bash
+docker exec -it pinot-controller bash 
+cd /scripts
+ls
 ```
 
 You should see the following files:
@@ -569,6 +569,14 @@ Next we will create the offlien table.
 - In our case, we will accept defaults for all other fields
 - Select SAVE
 
+## Exit the bash shell
+
+Run the following command to exit out of the bash shell.
+
+```bash
+exit
+```
+
 ## Validate deployment
 
 Make sure:
@@ -578,7 +586,7 @@ Make sure:
 
 ## Teardwon
 
-To tear down the cluster, runn the docker compose down command as
+To tear down the cluster, run the docker compose down command as
 
 ``` bash
 docker-compose down

@@ -33,7 +33,7 @@ Navigate to the ZooKeeper Tab to look at some configurations.
 
 ## Teardwon
 
-To tear down the cluster, runn the docker compose down command as
+To tear down the cluster, run the docker compose down command as
 
 ``` bash
 docker-compose down
