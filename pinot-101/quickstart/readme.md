@@ -9,7 +9,7 @@
 ### Running the Quick Start
 
 ```sh
-docker run -p 9000:9000 apachepinot/pinot:1.0.0 QuickStart -type hybrid
+docker run -p 9000:9000 apachepinot/pinot:1.1.0 QuickStart -type hybrid
 ```
 
 ### Using the UI

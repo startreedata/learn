@@ -26,7 +26,6 @@ In this course, we will go over:
 * How to query your data and supported SQL syntax
 * How to leverage Indexes
 * How to leverage Minions
-* How to decide when to use Pinot
 * Some use cases that work for Pinot
 
 == Format and Tools
@@ -44,8 +43,9 @@ image::images/Dployment.png[]
 * Run locally
 * Run using Docker Compose
 * Run using Kubernetes
-* Run on your own public cloud
+* Run on your own public cloud (BYOC)
 * Run on StarTree Cloud
+** This can be using the FREE tier or paid tier
 
 == Apache Pinot Components
 The following diagram describes the componentsof Apach Pinot:
@@ -59,6 +59,8 @@ image::images/Components.png[]
 ** Real-tim
 ** Offlien
 * Minion (optional)
+
+_Real Time servers can also load segments from Segment Store_
 
 === Docker Compose Deployment
 
@@ -119,6 +121,15 @@ zookeeper:
 <7> Network to use
 ====
 
+== Deploy Zookeeper
+
+Sample command to deploy Zookeeper:
+
+====
+[source]
+docker run --network=pinot-advanced  --name pinot-zookeeper --restart always -p 2181:2181 -d zookeeper:3.5.6
+====
+
 == Controller Configuration
 
 Pinot Controller’s configuration defines the following:
@@ -126,7 +137,7 @@ Pinot Controller’s configuration defines the following:
 [source]
 ----
 pinot-controller:
-    image: apachepinot/pinot:1.0.0                          <1>
+    image: apachepinot/pinot:1.1.0                         <1>
     command: "StartController -zkAddress zookeeper:2181"    <2>
     container_name: "pinot-controller"                      <3>
     restart: unless-stopped                                 <4> 
@@ -147,6 +158,15 @@ pinot-controller:
 <7> Network to use
 ====
 
+== Deploy Controller
+
+Sample command to deploy Pinot Controller:
+
+====
+[source]
+docker run -d --name pinot-controller --network pinot-advanced apachepinot/pinot:1.0.0 StartController -zkAddress pinot-zookeeper:2181
+====
+
 == Server Configuration
 Pinot Server’s configuration defines:
 
@@ -154,7 +174,7 @@ Pinot Server’s configuration defines:
 [source]
 ----
 pinot-server:
-    image: apachepinot/pinot:1.0.0                      <1>
+    image: apachepinot/pinot:1.1.0                      <1>
     command: "StartServer -zkAddress zookeeper:2181"    <2>
     restart: unless-stopped                             <3>
     container_name: "pinot-server"                      <4>
@@ -169,6 +189,15 @@ pinot-server:
 <4> Container name
 <5> Dependency
 <6> Network to use
+====
+
+== Deploy Server
+
+Sample command to deploy Pinot Server:
+
+====
+[source]
+docker run -d --name pinot-controller --network pinot-advanced apachepinot/pinot:1.0.0 StartController -zkAddress pinot-zookeeper:2181
 ====
 
 == Cluster Configuration
@@ -199,7 +228,7 @@ Cluster configuration defines the following:
 a|image::images/plus.png[]
 |In this exercise, we will create an Apache Pinot Cluster using Docker Compose.
 a|image::images/link.png[]
-|https://github.com/startreedata/learn/pinot-advanced/create-cluster
+|https://github.com/startreedata/learn/pinot-advanced/01-create-cluster
 a|image::images/check.png[]
 a|* [ ] Successfully deploy a cluster
 * [ ] Check cluster health by navigating to http://localhost:9000
@@ -230,7 +259,7 @@ image::images/server-tenant.png[]
 
 Server tenants allow for separation of data at a Server level.
 
-Typical use case might be segregating data by department within a company.
+Typical use case might be segregating data and compute by department within a company or critical and non-critical tasks.
 
 == Creating a Server Tenant: CLI
 
@@ -309,7 +338,7 @@ The content of the sample-broker-tenant.json:
 a|image::images/plus.png[]
 |In this exercise, we will create a tenant using CLI & API.
 a|image::images/link.png[]
-|https://github.com/startreedata/learn/pinot-advanced/add-tenat
+|https://github.com/startreedata/learn/pinot-advanced/10-add-tenat
 a|image::images/check.png[]
 a|* [ ] Successfully deploy a tenant
 * [ ] Check cluster health by navigating to http://localhost:9000
@@ -326,7 +355,7 @@ Pinot supports three types of tables:
 |===
 a|*Offline* +
 Offline tables ingest static data from external data stores and are generally used for batch ingestion.
-a|*Hybrid* _
+a|*Hybrid* +
 Hybrid Pinot tables have both real-time as well as offline tables under the hood. By default, all tables in Pinot are hybrid.
 a|*Real-time* +
 Real-time tables ingest data from streams (such as Kafka) and build segments from the consumed data.
@@ -362,31 +391,37 @@ image::images/segments.png[]
 image:images/deep-store.png[]
 
 * Segments are stored in Deep store.
-* Deep store is used for backup and restore operations.
+* Deep store is used for backup and restore operations, as well as replication.  It is sometimes used to move data.
 * When new servers are spun up, they access segments from the deep store.
 
 == Data Flow in Real-time Segments
 
 image::images/data-flow-1.png[]
 
-* In the case of Real Time tables, data is written to a segment.
+* In the case of Real Time tables, data is written to a segment during the commit phase.
 * The server responsible for the segments communicates the segment changes to the Controller.
 * The controller writes the Segment to the Deep Store.
+* Tables can bypass the controller and load data directly into the deep store by setting _realtime.segment.serverUploadToDeepStore=true_
 
 == Data Flow in Offline Segments
 
 image::images/data-flow-2.png[]
 
-* In the case of Real Time tables, data is written to a segment.
-* The server responsible for the segments communicates the segment changes to the Controller.
-* The controller writes the Segment to the Deep Store.
+In the case of Batch ingestion, the data is written directly to the Deep Store when configured.
 
 == Create Schema and table
 
 Pinot supports three ways to create schemas and tables of table:
-1. CLI
-2. API
-3. UI
+
+[cols="1,1,1"]
+|===
+a|*CLI* +
+a|*API* +
+a|*UI* +
+a|image::images/create-table-1.png[]
+a|image::images/create-table-2.png[]
+a|image::images/create-table-3.png[]
+|===
 
 === Schema Configuration
 
@@ -500,7 +535,10 @@ A segment configuration section in the table config file defines the following:
 
 == Dimension Tables
 
-Dimension tables are  used for lookups.  The cannot be HYBRID or REALTIME.  They are replicated on all hosts, for faster lookups.  They are typically small.
+* Dimension tables are used for lookups.  
+* The cannot be HYBRID or REALTIME.  
+* They are replicated on all hosts and loaded in memory, for faster lookups.  
+* They are typically small (limit 200MB).
 
 == Dimension Table Configuration
 
@@ -511,16 +549,16 @@ To configure a table as dimension table:
 ----
 {
   "OFFLINE": { … 
-  "segmentsConfig": {      …
-     "segmentPushType": "REFRESH"  }, <1>
-},
+  "segmentsConfig": {      
+     …
+     "segmentPushType": "REFRESH"     <1>
+    }, 
+  },
   "metadata": {},
   "quota": {  "storage": "200M"  },
   "isDimTable": true                  <2>
-    }
   "dimensionTableConfig": {
   "disablePreload": true              <3>
-    }
   }
 }
 ...
@@ -545,7 +583,7 @@ To configure a table as dimension table:
 a|image::images/plus.png[]
 |In this exercise, we will create a schema and tables using CLI, API & UI.
 a|image::images/link.png[]
-|https://github.com/startreedata/learn/pinot-advanced/add-table
+|https://github.com/startreedata/learn/pinot-advanced/02-add-table
 a|image::images/check.png[]
 a|* [ ] Successfully create a schema, a realtime table and an offline table
 * [ ] Check cluster health by navigating to http://localhost:9000
@@ -565,7 +603,7 @@ Pinot supports the following types of ingestion
 == Batch Ingestion
 
 * Batch ingestion is typically for offline tables. 
-* Data can be ingested from disk, spark or Hadoop.
+* Data can be ingested from disk, spark, Hadoop and cloud.
 * Batch ingestion can be done using CLI, API or the UI.  
 * Minion Tasks can also be configured for batch ingestion.
 
@@ -578,6 +616,15 @@ Pinot supports the following types of ingestion
 
 * Hybrid scenarios support both offline and streaming ingestion.
 * Each ingestion needs to be defined separately.
+
+== Ingesting Batch Data
+
+Batch Data can be ingested using the following methods:
+
+* CLI using JobSpec
+* UI - for small, test datasets
+* API - for adding data programatically
+* Minion Tasks - preferred method for production wokloads
 
 == Batch ingestion using JobSpec
 
@@ -614,6 +661,16 @@ pushJobSpec: …                // <12>
 ----
 <1> Execution Framework specifies the how segments will be created
 <2> Job Type specifies the type of job 
+<3> Input directory
+<4> File name pattern
+<5> Search recursively
+<6> Output directory
+<7> File system to use
+<8> Record Reader Specification
+<9> Table Specification
+<10> Segment Name Generator Spec
+<11> Pinot Cluster Specification
+<12> Push Job Specification
 ====
 
 == Execution Frameworks
@@ -804,6 +861,7 @@ pushAttempts: 2 #<1>
 * Data can be ingested using the UI
 * This example shows ingestion from an S3 bucket
 * The URL can be S3 or any accessible URL
+* This method is for testing, not production ready workloads.
 
 [source, sql]
 ----
@@ -849,7 +907,7 @@ image:  images/backfill.png[]
 a|image::images/plus.png[]
 |n this exercise, we will ingest data using CLI, API & UI.
 a|image::images/link.png[]
-|https://github.com/startreedata/learn/pinot-advanced/batch-ingestion
+|https://github.com/startreedata/learn/pinot-advanced/03-batch-ingestion
 a|image::images/check.png[]
 a|* [ ] Successfully ingest rows into a table
 * [ ] Check tables by navigating to localhost:9000/#/query
@@ -971,11 +1029,11 @@ Some additional configurations for streaming ingestion include:
 <3> Segment time value check
 ====
 
-== Pause and REsume Streaming Ingestion
+== Pause and Resume Streaming Ingestion
 
 * Stream consumption can be paused and resumed
 * This can be done using the API of CLI
-* When resuming, you can specify an additional parameter "resumeFrom=smallest/larget"
+* When resuming, you can specify an additional parameter _resumeFrom=smallest/largest_
 ====
 [source, bash]
 ----
@@ -992,7 +1050,7 @@ curl -X POST {controllerHost}/tables/{tableName}/resumeConsumption  <2>
 a|image::images/plus.png[]
 |In this exercise, we will create a table for stream ingestion, and ingest data using CLI.
 a|image::images/link.png[]
-|https://github.com/startreedata/learn/pinot-advanced/stream-ingestion
+|https://github.com/startreedata/learn/pinot-advanced/04-stream-ingestion
 a|image::images/check.png[]
 a|* [ ] Successfully create table and ingest data into a real-time table
 * [ ] Check tables by navigating to localhost:9000/#/query
@@ -1024,6 +1082,18 @@ GROUP BY bar, baz
 ORDER BY bar, MAX(foo) DESC 
 LIMIT 50
 ----
+== Single Stage Query Engine
+
+The Pinot single-stage query engine (also known as v1 query engine) uses a scatter-gather query engine model.
+
+image::images/v1-query.png[]
+
+== Multi Stage Query Engine
+
+* Multi-stage query engine (v2) allows for querying distributed joins, window functions, and other multi-stage operators in real-time.
+* It addresses some of the bottlenecks on v1 query engine.
+
+image::images/v2-query.png[]
 
 == Aggregation Functions
 
@@ -1068,12 +1138,17 @@ select distinctCountCpcSketch(DivAirports) AS value
 from airlineStats
 ----
 
-== Query Plan
+== Query Plan - Single Stage
 
 Apache Pinot supports query plans.  A query plan is a sequence of steps used to access data in a database management system.
 
+You can view the query plan in verbose or non-verbose (default) mode.  Verbose adds additional information to the query plan such as filters with and without indexes.
+
+To enable verbose mode the query option _explainPlanVerbose=true_ must be passed.
+
 [source, sql]
 ----
+SET explainPlanVerbose=true;
 EXPLAIN PLAN FOR 
 Select
    P_BRAND1, sum(LO_REVENUE)
@@ -1083,9 +1158,9 @@ where LO_PARTKEY = P_PARTKEY
 group by P_BRAND1
 ----
 
-== Query Plan V1
+== Query Plan Multi Stage
 
-In Pinot 1.0, you have the option of querying the logical plan or the implementation plan for a given query using the EXPLAIN PLAN syntax
+In Pinot 1.0 and above, you have the option of querying the logical plan or the implementation plan for a given query using the EXPLAIN PLAN syntax
 
 [source, sql]
 ----
@@ -1105,7 +1180,7 @@ group by P_BRAND1
 a|image::images/plus.png[]
 |In this exercise, we will use some queries to explore the capabilities of the v1 and v2 query engines.
 a|image::images/link.png[]
-|https://github.com/startreedata/learn/pinot-advanced/query
+|https://github.com/startreedata/learn/05-pinot-advanced/query
 a|image::images/check.png[]
 a|* [ ] Successfully query data from a table
 * [ ] Validate the query plan
@@ -1127,10 +1202,11 @@ image::images/upserts.gif[]
 * Upserts utilize comparison columns to determine the latest iteration of data 
 * Snapshots help create resiliency in metadata map to stay on top of any lost in memory metadata related to upserts in case of server outage
 * Enable preload helps faster recovery of upsert metadata map by using snapshots
+* StarTree Index is NOT supported when Upserts are on.
 
 == Upsert Configuration
 
-* To use upserts, a primary key must be defined in the schema config
+* To use upserts, a primary key must be defined in the schema config, as used to partition data.
 * In the table config, define a section "upsertConfig" with the appropriate mode.  Supported modes are FULL and PARTIAL.
 
 Schema Config:
@@ -1185,7 +1261,7 @@ To use partial upserts, a strategy must be defined:
 a|image::images/plus.png[]
 |In this exercise, we will create a table for stream ingestion with upsert and ingest data using CLI & API.
 a|image::images/link.png[]
-|https://github.com/startreedata/learn/pinot-advanced/upsert
+|https://github.com/startreedata/learn/pinot-advanced/06-upsert
 a|image::images/check.png[]
 a|* [ ] Successfully create table and ingest data into a table
 * [ ] Check table health by navigating to localhost:9000/#/query
@@ -1220,9 +1296,10 @@ image::images/transform.png[]
 
 == Groovy functions
 
-* To use Groovy functions, modify controller config to enable it set disabled = false, since the default behaviour is disabled:
-** controller.disable.ingestion.groovy=false
-* Use the syntax shown here to concatenate names.
+* Groovy functions are disabled by default
+* To use Groovy functions, modify controller config to enable it set disabled = false:
+** _controller.disable.ingestion.groovy=false_
+* Example: Use the syntax shown here to concatenate names.
 
 ====
 [source, sql]
@@ -1234,7 +1311,7 @@ image::images/transform.png[]
     }]
 }
 ----
-<1> Groovy function to add string
+<1> Groovy function to concatenate string
 ====
 
 Groovy Function Syntax:
@@ -1247,7 +1324,7 @@ Groovy({groovy script}, argument1, argument2...argumentN)
 a|image::images/plus.png[]
 |In this exercise, we will use some transformation functions while ingesting batch data using CLI.
 a|image::images/link.png[]
-|https://github.com/startreedata/learn/pinot-advanced/transform
+|https://github.com/startreedata/learn/pinot-advanced/07-transform
 a|image::images/check.png[]
 a|* [ ] Successfully ingest data into a table using Transformations
 * [ ] Check tables by navigating to localhost:9000/#/tables
@@ -1268,13 +1345,16 @@ a|* [ ] Successfully ingest data into a table using Transformations
 ** JSON index
 ** Geospatial Index
 ** Timestamp Index
+** Vector Index
 
 == Adding Indexes in Pinot
 
 Indexes can be added to an apache Pinot table during the table creation, or dynamically by editing the table configuration file.
 
 * On Table Creation
-* Dynamically, by editing the Table Configuration
+* Dynamically, by editing the Table Configuration (except for sorted index)
+
+_Sorted Indexes include Forward and Inverted Sorted Index_
 
 TIP: When adding an index dynamically, changes in index configuration won't be picked up unless you invoke the reload API.
 
@@ -1337,7 +1417,7 @@ curl -X POST  "http://localhost:9000/segments/myTable/reload"  -H "accept: appli
 
 * Aggregations such as min, max, count etc. can be very resource intensive and are most performant on pre-aggregated data
 * However pre-aggregated data can be overkill for seldom queried data
-* The star-tree index allows for pre-aggregation of most used data, and combines low used data into "Star" buckets
+* The star-tree index allows for pre-aggregation of most used data, and combines seldom queried data into "Star" buckets
 * The Star-tree index also can be applied over multiple columns
 
 [source]
@@ -1462,7 +1542,7 @@ SELECT COUNT(*) FROM Foo WHERE TEXT_CONTAINS (<column_name>, "foo.*")
 
 * JSON strings with nested structure benefit from JSON index
 * JSON index allows you to set max levels of nesting supported, include arrays as well as define include and exclude paths
-* To use JSON index, use the JSON_EXTRACT_SCALAR function.
+* To use JSON index, use the JSON_MATCH function.
 
 [source]
 ----
@@ -1510,6 +1590,28 @@ SELECT COUNT(*) FROM Foo WHERE TEXT_CONTAINS (<column_name>, "foo.*")
 }
 ----
 
+== Vector Index
+
+* Uses hierarchical navigable small worlds (HNSW)
+* Supports Vector Index on float array/multi-value columns
+* Add predicate and function to retrieve topK closest vector
+
+[source]
+----
+"fieldConfigList": [
+      {
+        "encodingType": "RAW",
+        "indexType": "VECTOR",
+        "name": "embedding",
+        "properties": {
+          "vectorIndexType": "HNSW",
+          "vectorDimension": 512,
+          "vectorDistanceFunction": "COSINE",
+          "version": 1
+        }
+      }
+----
+
 ==  Exercise: Indexes
 
 [cols="1,5"]
@@ -1517,7 +1619,7 @@ SELECT COUNT(*) FROM Foo WHERE TEXT_CONTAINS (<column_name>, "foo.*")
 a|image::images/plus.png[]
 |In this exercise, we create some indexes to see how they improve performance.
 a|image::images/link.png[]
-|https://github.com/startreedata/learn/pinot-advanced/indexes
+|https://github.com/startreedata/learn/pinot-advanced/06-indexes
 a|image::images/check.png[]
 a|* [ ] Successfully create indexes on tables
 * [ ] Validate performance improvements.
@@ -1564,7 +1666,9 @@ image::images/Minion-1.png[]
 
 == Realtime to Offline Segments Task
 
-The Realtime to Offline Segments Task is to convert Realtime segments to Offline segments.  
+* Converts Real-time segments to Offline segments
+* Automatically manage the movement of the data
+* Moving to Offline allows for deduplication, backfill, and querying bigger windows of data.
 
 image::images/Minion-2.png[]
 

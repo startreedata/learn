@@ -23,6 +23,14 @@ Once that's run, you can navigate the Pinot UI - [http://localhost:9000](http://
 
 Make sure:
 
+## Teardwon
+
+To tear down the cluster, run the docker compose down command as
+
+``` bash
+docker-compose down
+```
+
 ## Success
 
 There! You've just used minion to run tasks for Apache Pinot!

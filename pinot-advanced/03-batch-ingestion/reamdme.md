@@ -13,7 +13,7 @@ The exercises include:
 ## Run the compose file
 
 ``` bash
-docker-compose -f docker-compose.yml up
+docker-compose up -d
 ```
 
 ## Launching the UI
@@ -29,10 +29,9 @@ Once that's run, you can navigate the Pinot UI - [http://localhost:9000](http://
 ``` sql
 SET taskName = 'URL-Read';
 SET input.fs.className = 'org.apache.pinot.plugin.filesystem.S3PinotFS';
-SET input.fs.prop.region = 'us-east-2';
 INSERT INTO "movies"
-FROM FILE 's3://bhdemo/movies.csv'
-
+SET input.fs.prop.region = 'us-east-2';
+FROM FILE 's3://bhs3/demo/movies.csv'
 ```
 
 - Make sure the recods were ingested.
@@ -54,11 +53,10 @@ curl -X POST -F file=movies.csv  -H "Content-Type: multipart/form-data"  "http:/
 
 In this sections, we will use CLI to ingest data.
 
-- Using docker desktop or docker command, join the pinot-controller shell.
 - Run the following command:
 
 ``` bash
-/opt/pinot/bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile /scripts/job-spec-json.yaml
+docker exec -d pinot-controller '/opt/pinot/bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile /scripts/job-spec-json.yaml'
 ```
 
 ## Validate deployment
@@ -66,6 +64,14 @@ In this sections, we will use CLI to ingest data.
 Make sure:
 
 - the movies table is pupulated following each ingestion
+
+## Teardwon
+
+To tear down the cluster, run the docker compose down command as
+
+``` bash
+docker-compose down
+```
 
 ## Success
 

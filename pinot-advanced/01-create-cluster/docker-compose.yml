@@ -12,7 +12,7 @@ services:
     networks:
       - pinot-advanced
   pinot-controller:
-    image: apachepinot/pinot:latest
+    image: apachepinot/pinot:1.1.0
     command: "StartController -zkAddress zookeeper:2181"
     container_name: "pinot-controller"
     restart: unless-stopped
@@ -23,7 +23,7 @@ services:
     networks:
       - pinot-advanced
   pinot-broker:
-    image: apachepinot/pinot:latest
+    image: apachepinot/pinot:1.1.0
     command: "StartBroker -zkAddress zookeeper:2181"
     restart: unless-stopped
     container_name: "pinot-broker"
@@ -34,7 +34,7 @@ services:
     networks:
       - pinot-advanced
   pinot-server:
-    image: apachepinot/pinot:latest
+    image: apachepinot/pinot:1.1.0
     command: "StartServer -zkAddress zookeeper:2181"
     restart: unless-stopped
     container_name: "pinot-server"

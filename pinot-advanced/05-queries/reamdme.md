@@ -97,6 +97,14 @@ Make sure:
 
 - All Queries run and are performant
 
+## Teardwon
+
+To tear down the cluster, run the docker compose down command as
+
+``` bash
+docker-compose down
+```
+
 ## Success
 
 There! You've just created three tables!

@@ -104,6 +104,14 @@ bin/pinot-admin.sh AddTenant \
 
 ```
 
+## Teardwon
+
+To tear down the cluster, run the docker compose down command as
+
+``` bash
+docker-compose down
+```
+
 ## Success
 
 There! You've just created some Apache Pinot Tenants!
