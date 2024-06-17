@@ -1,6 +1,9 @@
 {
   "tableName": "github_events",
   "tableType": "OFFLINE",
+  "query" : {
+    "disableGroovy": false
+  },
   "segmentsConfig": {
     "retentionTimeUnit": "DAYS",
     "retentionTimeValue": "1",
@@ -62,8 +65,26 @@
   ],
   "tableIndexConfig": {
     "loadMode": "MMAP",
+    "nullHandlingEnabled": true,
     "sortedColumn": [
       "created_at"
+    ],
+    "invertedIndexColumns": [
+      "id",
+      "type",
+      "repo_name",
+      "commit_author_names",
+      "label_ids"
+    ],
+    "bloomFilterColumns": [
+      "id",
+      "commit_author_names",
+      "label_ids"
+    ],
+    "jsonIndexColumns": [
+      "actor_json",
+      "payload_commits",
+      "payload_pull_request"
     ],
     "noDictionaryColumns": [
       "payload_commits",

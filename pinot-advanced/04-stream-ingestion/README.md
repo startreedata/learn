@@ -24,7 +24,7 @@ Notice that in the docker compose file deploys Kafka.
 We will use a node application to ingest wikipedia events and send them to kafka.
 
 - Check the `wikievents.js` code under scripts folder on how to connect to kafka
-- Run the done script `wikievents.js` 
+- Run the done script `wikievents.js`
 - Check the `wikipedia_events_schema.json` file to inspect the schema
 - check the `wikipedia_events_realtime_table_config.json` to inspect the table design
 - Navigate to [http://localhost:9000/#/query](http://localhost:9000/#/query) to validate that the table exists
@@ -39,5 +39,5 @@ Make sure:
 
 ## Success
 
-There! 
+There!
 You've just ingested batch data using API, UI & CLI into Pinot!

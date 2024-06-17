@@ -100,6 +100,14 @@ bin/pinot-admin.sh AddTenant \
     -realtimeInstanceCount 0 -exec
 ```
 
+## Teardwon
+
+To tear down the cluster, run the docker compose down command as
+
+``` bash
+docker-compose down
+```
+
 ## Success
 
 There! 
