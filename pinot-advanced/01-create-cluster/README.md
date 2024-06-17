@@ -1,6 +1,6 @@
 # Create Apache Pinot cluster using Docker Compose
 
-This folder contains the code for creating a Apache Pinot Cluster.
+This folder contains the code for creating an Apache Pinot Cluster.
 
 ## The contents
 
@@ -11,9 +11,9 @@ The contents of this cluster include:
 - Broker
 - Server
 
-## Run the compose file
+## Run the docker compose file
 
-``` bash
+```bash
 docker-compose up -d
 ```
 
@@ -25,20 +25,20 @@ Once that's run, you can navigate the Pinot UI - [http://localhost:9000](http://
 
 Make sure:
 
-- 1 Controller is running
-- 1 Broker is running
-- 1 Server is running
+- One Controller is running
+- One Broker is running
+- One Server is running
 
 Navigate to the ZooKeeper Tab to look at some configurations.
 
-## Teardwon
+## Teardown
 
-To tear down the cluster, runn the docker compose down command as
+To tear down the cluster, run the docker compose down command as
 
-``` bash
+```bash
 docker-compose down
 ```
 
 ## Success
 
-There! You've just stood up a Apache Pinot Cluster!
+There! You've just stood up an Apache Pinot Cluster!

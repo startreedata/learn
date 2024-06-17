@@ -1,37 +1,36 @@
 # Create Pinot Schema and Table
 
-This folder contains the code for creating a Apache Pinot Cluster and adding schema and tables.
+This folder contains the code for creating an Apache Pinot Cluster and adding schema and tables.
 
-## The Execises
+## The Exercises
 
-The exercise  include:
+The exercise includes:
 
 - Add schema and table using API
 - Add schema and table using CLI
 - Add schema and table using UI
 - Add real-time and offline tables
 
-## Run the compose file
+## Run the docker compose file
 
 ``` bash
-docker-compose -f docker-compose.yml up
+docker-compose up -d
 ```
 
 ## Launching the UI
 
 Once that's run, you can navigate the Pinot UI - [http://localhost:9000](http://localhost:9000)
 
-## Excercise 1 - API
+## Exercise 1 - API
 
-In this excercise, we will create a schema and a offline table using API.
+In this exercise, we will create a schema and an offline table using API.
 
 - Navigate to the Swagger APIs located at [http://localhost:9000/help](http://localhost:9000/help)
 - Find the "Schema" section in the APIs.  
 - Find the POST - create schema, and click the button "Try It Out"
-- Paste the following code and hit enter:
+- Paste the following code and hit Enter:
 
 ``` json
-
 {
     "metricFieldSpecs": [
     ],
@@ -387,7 +386,7 @@ In this excercise, we will create a schema and a offline table using API.
 - Navigate to the Swagger APIs located at [http://localhost:9000/help](http://localhost:9000/help)
 - Find the "Table" section in the APIs.  
 - Find the POST - create table, and click the button "Try It Out"
-- Paste the following code and hit enter:
+- Paste the following code and hit Enter:
 
 ``` json
 {
@@ -528,7 +527,7 @@ In this exercise, we will use the CLI to create a schema and table.
 
 First, using either the Docker Desktop or docker command line, join the pinot-controller shell.
 
-Navigate to the scripts folder:
+Navigate to the `scripts` folder:
 
 ```sh
 cd scripts
@@ -536,8 +535,8 @@ cd scripts
 
 You should see the following files:
 
-- gitHub_events_offline_table_config.json
-- gitHub_events_schema.json
+- `gitHub_events_offline_table_config.json`
+- `gitHub_events_schema.json`
 
 Use the following command to create the table
 
@@ -549,9 +548,9 @@ At this point, you should be able to verify that the Table and schema were creat
 
 ## Exercise 3 - UI
 
-In this exercise we will create a schema and table using the Pinot UI.
+In this exercise, we will create a schema and table using the Pinot UI.
 
-- Navigate to the Tables are by going here: [http://localhost:9000/#/tables](http://localhost:9000/#/tables)
+- Navigate to the Tables by going here: [http://localhost:9000/#/tables](http://localhost:9000/#/tables)
 - Select the Add Schema button
 - Use the UI to create a schema using the following name & fields:
 - Schema Name: fineFoodReviews
@@ -561,10 +560,10 @@ In this exercise we will create a schema and table using the Pinot UI.
 - Summary: Dimension,STRING
 - Text: Dimension,STRING
 - n_tokens: Dimension,INT
-- embedding: Dimension,FLOAT (multivalueField true)
+- embedding: Dimension,FLOAT (`multivalueField` true)
 - select SAVE
 
-Next we will create the offlien table.
+Next, we will create the offline table.
 
 - Select the Add Offline Table button
 - In our case, we will accept defaults for all other fields
@@ -574,9 +573,17 @@ Next we will create the offlien table.
 
 Make sure:
 
-- 3 Schemas are created
-- 3 Tables are created
+- Three Schemas are created
+- Three Tables are created
+
+## Teardown
+
+To tear down the cluster, run the docker compose down command as
+
+```bash
+docker-compose down
+```
 
 ## Success
 
-There! You've just created three tables!
+There! You've just created three tables in a Pinot Cluster!
