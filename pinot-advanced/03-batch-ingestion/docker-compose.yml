@@ -1,4 +1,3 @@
-version: '3.7'
 services:
   zookeeper:
     image: zookeeper:latest
@@ -63,7 +62,7 @@ services:
     restart: on-failure
     entrypoint: "bash -c"
     environment:
-    - "JAVA_OPTS=-Dpinot.admin.system.exit=true"
+      - "JAVA_OPTS=-Dpinot.admin.system.exit=true"
     depends_on:
       - pinot-controller
     networks:

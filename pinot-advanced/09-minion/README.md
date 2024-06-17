@@ -1,6 +1,6 @@
 # Using Minions
 
-This folder contains the excercise to use Minion for tasks.
+This folder contains the exercise to use Minion for tasks.
 
 ## The contents
 
@@ -9,10 +9,10 @@ The contents of this exercise include:
 - Batch ingestion
 - Segment merge
 
-## Run the compose file
+## Run the docker compose file
 
-``` bash
-docker-compose -f docker-compose.yml up
+```bash
+docker-compose up
 ```
 
 ## Launching the UI

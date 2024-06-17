@@ -1,20 +1,20 @@
 # Create Pinot Schema and Table
 
-This folder contains the code for creating a Apache Pinot Cluster and adding schema and tables.
+This folder contains the code for creating an Apache Pinot Cluster and adding schema and tables.
 
-## The Execises
+## The Exercises
 
-The exercise  include:
+The exercise includes:
 
 - Add schema and table using API
 - Add schema and table using CLI
 - Add schema and table using UI
 - Add real-time and offline tables
 
-## Run the compose file
+## Run the docker compose file
 
-``` bash
-docker-compose -f docker-compose.yml up
+```bash
+docker-compose up
 ```
 
 ## Launching the UI
