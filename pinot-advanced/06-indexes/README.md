@@ -1,27 +1,27 @@
 # Create Pinot Indexes
 
-This folder contains the code for creating a Apache Pinot indexes.
+This folder contains the code for creating an Apache Pinot indexes.
 
-## The Execises
+## The Exercises
 
-The exercise  include:
+The exercise includes:
 
 - Add Inverted Index
 - Add Bloom Filters
 - Add Json Index
 - more...
 
-## Run the compose file
+## Run the docker compose file
 
-``` bash
-docker-compose -f docker-compose.yml up
+```bash
+docker-compose up
 ```
 
 ## Launching the UI
 
 Once that's run, you can navigate the Pinot UI - [http://localhost:9000](http://localhost:9000)
 
-## Excercise 0 - Create Schema, control table, load data
+## Exercise 0 - Create Schema, control table, load data
 
 We will use the same schema to create different tables to compare performance
 
@@ -29,34 +29,34 @@ We will use the same schema to create different tables to compare performance
 - Using either Docker desktop or docker, log into the pinot controller
 - run the following script to create schema and table:
 
-``` bash
+```bash
 /opt/pinot/bin/pinot-admin.sh AddTable -schemaFile /scripts/gitHub_events_schema.json -tableConfigFile /scripts/gitHub_events_offline_table_config.json -exec 
 ```
 
 - Next, we will populate some data in the tables
 - Run the following script to ingest data from rawdata
 
-``` bash
+```bash
 gunzip /scripts/rawdata/*.json.gz
 /opt/pinot/bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile /scripts/job-spec.yaml
 ```
 
 - Use the UI to validate that the table was created and data was added.
 
-## Excercise 1 - Inverted Index
+## Exercise 1 - Inverted Index
 
-We will be using the API to create these tableswith indexes.
+We will be using the API to create these tables with indexes.
 
-- Navigate to the follwing URL to access the API: [http://localhost:9000/#/help](http://localhost:9000/#/help)
+- Navigate to the following URL to access the API: [http://localhost:9000/#/help](http://localhost:9000/#/help)
 - add stuff
-- Navigate to the Tables are by going here: [http://localhost:9000/#/tables](http://localhost:9000/#/tables)
+- Navigate to the Tables by going here: [http://localhost:9000/#/tables](http://localhost:9000/#/tables)
 
 ## Validate deployment
 
 Make sure:
 
-- 3 Schemas are created
-- 3 Tables are created
+- Three Schemas are created
+- Three Tables are created
 
 ## Success
 

@@ -42,7 +42,7 @@ includeFileNamePattern: 'glob:**/*.json'
 # _excludeFileNamePattern: ''
 
 # outputDirURI: Root directory of output segments, expected to have scheme configured in PinotFS.
-outputDirURI:  '/scripts/'
+outputDirURI: '/scripts/'
 
 # overwriteOutput: Overwrite output segments if existed.
 overwriteOutput: true
