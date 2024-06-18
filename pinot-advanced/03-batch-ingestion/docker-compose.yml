@@ -1,6 +1,6 @@
 services:
   zookeeper:
-    image: zookeeper:latest
+    image: zookeeper:3.5.6
     hostname: zookeeper
     container_name: zookeeper
     ports:
@@ -11,7 +11,7 @@ services:
     networks:
       - pinot-advanced
   pinot-controller:
-    image: apachepinot/pinot:1.1.0
+    image: apachepinot/pinot:1.0.0
     command: "StartController -zkAddress zookeeper:2181"
     container_name: "pinot-controller"
     volumes:
@@ -25,7 +25,7 @@ services:
     networks:
       - pinot-advanced
   pinot-broker:
-    image: apachepinot/pinot:1.1.0
+    image: apachepinot/pinot:1.0.0
     command: "StartBroker -zkAddress zookeeper:2181"
     restart: unless-stopped
     container_name: "pinot-broker"
@@ -36,7 +36,7 @@ services:
     networks:
       - pinot-advanced
   pinot-server:
-    image: apachepinot/pinot:1.1.0
+    image: apachepinot/pinot:1.0.0
     command: "StartServer -zkAddress zookeeper:2181"
     restart: unless-stopped
     container_name: "pinot-server"
@@ -44,17 +44,8 @@ services:
       - pinot-broker
     networks:
       - pinot-advanced
-  pinot-minion:
-    image: apachepinot/pinot:1.1.0
-    command: "StartMinion -zkAddress zookeeper:2181"
-    restart: unless-stopped
-    container_name: "pinot-minion"
-    depends_on:
-      - pinot-controller
-    networks:
-      - pinot-advanced
   pinot-command-runner:
-    image: apachepinot/pinot:1.1.0
+    image: apachepinot/pinot:1.0.0
     volumes:
       - ./scripts:/scripts
     command: "'./bin/pinot-admin.sh AddTable -schemaFile /scripts/movies_schema.json -tableConfigFile /scripts/movies_offline_table.json -controllerHost pinot-controller -exec'"

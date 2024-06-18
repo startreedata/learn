@@ -68,5 +68,5 @@ Make sure:
 
 ## Success
 
-There!
+There! 
 You've just ingested batch data using API, UI & CLI into Pinot!

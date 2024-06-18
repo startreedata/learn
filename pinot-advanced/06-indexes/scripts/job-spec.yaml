@@ -27,7 +27,7 @@ executionFrameworkSpec:
 jobType: SegmentCreationAndTarPush
 
 # inputDirURI: Root directory of input data, expected to have scheme configured in PinotFS.
-inputDirURI: '/opt/pinot/data'
+inputDirURI: '/scripts/rawdata'
 
 # includeFileNamePattern: include file name pattern, supported glob pattern.
 # Sample usage:
@@ -42,7 +42,7 @@ includeFileNamePattern: 'glob:**/*.json'
 # _excludeFileNamePattern: ''
 
 # outputDirURI: Root directory of output segments, expected to have scheme configured in PinotFS.
-outputDirURI: 'outputSegments'
+outputDirURI: '/scripts/'
 
 # overwriteOutput: Overwrite output segments if existed.
 overwriteOutput: true
@@ -97,7 +97,7 @@ tableSpec:
   # E.g.
   #   hdfs://path/to/table_schema.json
   #   http://localhost:9000/tables/myTable/schema
-  schemaURI: 'http://pinot-controller:9000/tables/github_events/schema'
+  schemaURI: 'http://localhost:9000/tables/github_events/schema'
 
   # tableConfigURI: defines where to reade the table config.
   # Supports using PinotFS or HTTP.
@@ -106,13 +106,13 @@ tableSpec:
   #   http://localhost:9000/tables/myTable
   # Note that the API to read Pinot table config directly from pinot controller contains a JSON wrapper.
   # The real table config is the object under the field 'OFFLINE'.
-  tableConfigURI: 'http://pinot-controller:9000/tables/github_events'
+  tableConfigURI: 'http://localhost:9000/tables/github_events'
 
 # pinotClusterSpecs: defines the Pinot Cluster Access Point.
 pinotClusterSpecs:
   - # controllerURI: used to fetch table/schema information and data push.
     # E.g. http://localhost:9000
-    controllerURI: 'http://pinot-controller:9000'
+    controllerURI: 'http://localhost:9000'
 
 # pushJobSpec: defines segment push job related configuration.
 pushJobSpec:

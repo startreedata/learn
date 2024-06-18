@@ -2,8 +2,5 @@
   "dependencies": {
     "eventsource": "^2.0.2",
     "kafkajs": "^2.2.4"
-  },
-  "engines": { 
-    "node": ">=14.0.0" 
   }
 }

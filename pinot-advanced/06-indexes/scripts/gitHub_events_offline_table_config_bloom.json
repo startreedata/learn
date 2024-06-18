@@ -65,6 +65,22 @@
     "sortedColumn": [
       "created_at"
     ],
+    "invertedIndexColumns": [
+      "id",
+      "type",
+      "repo_name",
+      "commit_author_names",
+      "label_ids"
+    ],
+    "bloomFilterColumns": [
+      "id",
+      "commit_author_names",
+      "label_ids"
+    ],
+    "jsonIndexColumns": [
+      "actor_json",
+      "payload_commits"
+    ],
     "noDictionaryColumns": [
       "payload_commits",
       "payload_pull_request"

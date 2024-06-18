@@ -6,12 +6,6 @@
       "schemaName": "movies",
       "timeColumnName": "releaseDate"
     },
-    "task": {
-      "taskTypeConfigsMap": {
-        "SegmentGenerationAndPushTask": {
-        }
-      }
-    },
     "tenants": {},
     "tableIndexConfig": {},
     "ingestionConfig": {},

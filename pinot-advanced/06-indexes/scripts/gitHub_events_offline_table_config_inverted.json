@@ -1,5 +1,5 @@
 {
-  "tableName": "github_events",
+  "tableName": "github_events_inverted_index",
   "tableType": "OFFLINE",
   "segmentsConfig": {
     "retentionTimeUnit": "DAYS",
@@ -64,6 +64,13 @@
     "loadMode": "MMAP",
     "sortedColumn": [
       "created_at"
+    ],
+    "invertedIndexColumns": [
+      "id",
+      "type",
+      "repo_name",
+      "commit_author_names",
+      "label_ids"
     ],
     "noDictionaryColumns": [
       "payload_commits",

@@ -577,14 +577,6 @@ Make sure:
 - 3 Schemas are created
 - 3 Tables are created
 
-## Teardwon
-
-To tear down the cluster, run the docker compose down command as
-
-``` bash
-docker-compose down
-```
-
 ## Success
 
 There! You've just created three tables!
