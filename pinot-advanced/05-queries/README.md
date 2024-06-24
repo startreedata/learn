@@ -202,4 +202,4 @@ Make sure:
 ## Success
 
 There! 
-You've just created three tables!
+You've just run several queries on Pinot!
