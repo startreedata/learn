@@ -21,7 +21,7 @@ docker-compose up
 
 Once that's run, you can navigate the Pinot UI - [http://localhost:9000](http://localhost:9000)
 
-## Exercise 0 - Create Schema, control table, load data
+## Exercise 0 - Create table, load data
 
 We will use the same schema to create different tables to compare performance
 

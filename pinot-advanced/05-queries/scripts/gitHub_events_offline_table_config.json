@@ -1,6 +1,9 @@
 {
     "tableName": "github_events",
     "tableType": "OFFLINE",
+    "query" : {
+      "disableGroovy": false
+    },
     "segmentsConfig": {
       "retentionTimeUnit": "DAYS",
       "retentionTimeValue": "1",
@@ -9,8 +12,7 @@
       "schemaName": "github_events",
       "replication": "1"
     },
-    "tenants": {
-    },
+    "tenants": {},
     "ingestionConfig": {
       "transformConfigs": [
         {
@@ -62,6 +64,7 @@
     ],
     "tableIndexConfig": {
       "loadMode": "MMAP",
+      "nullHandlingEnabled": true,
       "sortedColumn": [
         "created_at"
       ],
@@ -79,7 +82,8 @@
       ],
       "jsonIndexColumns": [
         "actor_json",
-        "payload_commits"
+        "payload_commits",
+        "payload_pull_request"
       ],
       "noDictionaryColumns": [
         "payload_commits",

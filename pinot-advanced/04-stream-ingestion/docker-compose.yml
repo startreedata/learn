@@ -11,78 +11,94 @@ services:
     networks:
       - pinot-advanced
   kafka:
-    image: confluentinc/cp-kafka:latest
+    image: docker.io/bitnami/kafka:3.6
     hostname: kafka
     container_name: kafka
     ports:
       - "29092:29092"
       - "9092:9092"
     environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
-      KAFKA_TOOLS_LOG4J_LOGLEVEL: ERROR
+      # KRaft settings
+      - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
+      # Listeners
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,PLAINTEXT_HOST://:29092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://:9092,PLAINTEXT_HOST://localhost:29092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
     depends_on:
       - zookeeper
     networks:
       - pinot-advanced
     healthcheck: {test: nc -z localhost 9092, interval: 1s}
-  #node_app:
-  #  image: node:latest
-  #  volumes:
-  #    - ./scripts:/scripts
-  #  command: sh -c "npm i eventsource kafkajs && node /scripts/wikievents.js"
-  #  working_dir: /scripts
-  #  depends_on:
-  #    - kafka
-  #  networks:
-  #    - pinot-advanced
+  
   pinot-controller:
-    image: apachepinot/pinot:1.0.0
+    image: apachepinot/pinot:1.1.0
     command: "StartController -zkAddress zookeeper:2181"
     container_name: "pinot-controller"
+    hostname: pinot-controller
     volumes:
       - ./scripts:/scripts
     restart: unless-stopped
     ports:
       - "9000:9000"
+    environment:
+      JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms1G -Xmx4G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xloggc:gc-pinot-controller.log"
     depends_on:
       - zookeeper
     networks:
       - pinot-advanced
+
   pinot-broker:
-    image: apachepinot/pinot:1.0.0
+    image: apachepinot/pinot:1.1.0
     command: "StartBroker -zkAddress zookeeper:2181"
     restart: unless-stopped
     container_name: "pinot-broker"
+    hostname: pinot-broker
     ports:
       - "8099:8099"
+    environment:
+      JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms4G -Xmx4G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xloggc:gc-pinot-broker.log"
     depends_on:
       - pinot-controller
     networks:
       - pinot-advanced
+
   pinot-server:
-    image: apachepinot/pinot:1.0.0
+    image: apachepinot/pinot:1.1.0
     command: "StartServer -zkAddress zookeeper:2181"
     restart: unless-stopped
     container_name: "pinot-server"
+    hostname: pinot-server
+    ports:
+      - "8098:8098"
+      - "9015:9015"
+    environment:
+      JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms4G -Xmx16G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xloggc:gc-pinot-server.log"
     depends_on:
       - pinot-broker
     networks:
       - pinot-advanced
-  pinot-command-runner:
-    image: apachepinot/pinot:1.0.0
+  
+  pinot-add-table:
+    image: apachepinot/pinot:1.1.0
     volumes:
       - ./scripts:/scripts
     command: "'./bin/pinot-admin.sh AddTable -schemaFile /scripts/wikipedia_events_schema.json -tableConfigFile /scripts/wikipedia_events_realtime_table_config.json -controllerHost pinot-controller -exec'"
-    container_name: "pinot-command-runner"
+    container_name: "pinot-add-table"
     restart: on-failure
     entrypoint: "bash -c"
     environment:
-    - "JAVA_OPTS=-Dpinot.admin.system.exit=true"
+      - kafka
+    networks:
+      - pinot-advanced
+
+  pinot-node-consumer:
+    image: pinot-advanced/nodejs-streaming-ingest:latest
+    container_name: "pinot-node-consumer"
+    restart: on-failure
     depends_on:
       - pinot-controller
       - kafka

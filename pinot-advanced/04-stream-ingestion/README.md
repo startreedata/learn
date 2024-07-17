@@ -8,36 +8,57 @@ The exercises include:
 
 - Ingest using Kafka
 
+### Ingest using Kafka
+
+Notice that in the docker compose file deploys Kafka.
+We will use a node application to ingest wikipedia events and send them to kafka.
+
+### Generate data
+
+For this, we need to run a node app to consume data and write to Kafaka
+First, we will build the node app:
+
+``` sh
+docker build -t pinot-advanced/nodejs-streaming-ingest ./node-app
+
+```
+
 ## Run the docker compose file
 
-```bash
-docker-compose up
+``` sh
+docker-compose up -d
 ```
 
 ## Launching the UI
 
 Once that's run, you can navigate the Pinot UI - [http://localhost:9000](http://localhost:9000)
 
-### Ingest using Kafka
+- It takes a few minutes for Pinot to start
+- Make sure that the wikievents table is created by navigating to  [http://localhost:9000/#/query](http://localhost:9000/#/query)
 
-Notice that in the docker compose file deploys Kafka.
-We will use a node application to ingest wikipedia events and send them to kafka.
+## Start Consumer
 
-- Check the `wikievents.js` code under scripts folder on how to connect to kafka
-- Run the done script `wikievents.js` 
-- Check the `wikipedia_events_schema.json` file to inspect the schema
-- check the `wikipedia_events_realtime_table_config.json` to inspect the table design
-- Navigate to [http://localhost:9000/#/query](http://localhost:9000/#/query) to validate that the table exists
-- Run the sample select query to validate data
-- Stop the `wikievents.js`
+``` sh
+docker start pinot-node-consumer
+```
+
+## Stop Consumer
+
+``` sh
+docker stop pinot-node-consumer
+```
 
 ## Validate deployment
 
-Make sure:
+- the wikipedia events table is pupulated by navigating to: [http://localhost:9000/#/query?query=select+*+from+wikievents+limit+10&tracing=false&useMSE=false](http://localhost:9000/#/query?query=select+*+from+wikievents+limit+10&tracing=false&useMSE=false)
 
-- the wikipedia events table is populated
+## Teardown
+
+``` sh
+docker-compose down
+```
 
 ## Success
 
-There! 
+There!
 You've just ingested batch data using API, UI & CLI into Pinot!
