@@ -1,5 +1,9 @@
 # Define the list of directories
 DIRS := 01-create-cluster 02-add-table 03-batch-ingestion 04-stream-ingestion 05-queries  06-indexes 07-transform 08-upserts 09-minion 10-create-tenant
+
+# GH Action runner runs out of disk space if cache from every folder
+CACHE_DIRS: 04-stream-ingestion 05-queries 08-upserts
+
 .ONESHELL:
 
 .PHONY: all pull_images stop_containers 
@@ -37,14 +41,14 @@ build:
 	cd $(DIR4) && docker-compose build -q 
 
 load-cache:
-	$(foreach dir,$(DIRS), \
+	$(foreach dir,$(CACHE_DIRS), \
 		if [ -f /tmp/.buildx-cache/$(dir).tar ]; then \
 			docker load -i /tmp/.buildx-cache/$(dir).tar; \
 		fi; \
 	)
 
 save-cache:
-	$(foreach dir,$(DIRS), \
+	$(foreach dir,$(CACHE_DIRS), \
 		mkdir -p /tmp/.buildx-cache; \
 		docker save -o /tmp/.buildx-cache/$(dir).tar $$(docker-compose -f $(dir)/docker-compose.yml config | grep 'image:' | awk '{ print $$2 }'); \
 	)
