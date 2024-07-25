@@ -27,7 +27,7 @@ executionFrameworkSpec:
 jobType: SegmentCreationAndTarPush
 
 # inputDirURI: Root directory of input data, expected to have scheme configured in PinotFS.
-inputDirURI: '/scripts/rawdata'
+inputDirURI: '/opt/pinot/data'
 
 # includeFileNamePattern: include file name pattern, supported glob pattern.
 # Sample usage:

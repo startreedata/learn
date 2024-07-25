@@ -39,7 +39,7 @@ This course uses Docker Compose for all the exercises. While you do not need to 
 
 Apache Pinot can be deployed in the following ways:
 
-image::images/Dployment.png[]
+image::images/Deployment.png[]
 
 * Run locally
 * Run using Docker Compose
@@ -210,7 +210,7 @@ a|* [ ] Successfully deploy a cluster
 
 == Tenants in Pinot
 
-image::images/tenant.jpg[]
+image::images/tenant.png[]
 
 A tenant is a logical component defined as a group of server/broker nodes with the same tag.
 
@@ -844,7 +844,7 @@ image:  images/backfill.png[]
 
 ==  Exercise: Ingest Data
 
-[cols="1,1"]
+[cols="1,5"]
 |===
 a|image::images/plus.png[]
 |n this exercise, we will ingest data using CLI, API & UI.
@@ -987,7 +987,7 @@ curl -X POST {controllerHost}/tables/{tableName}/resumeConsumption  <2>
 ====
 
 == Exercise: Ingest Streaming Data
-[cols="1,1"]
+[cols="1,5"]
 |===
 a|image::images/plus.png[]
 |In this exercise, we will create a table for stream ingestion, and ingest data using CLI.
@@ -1242,7 +1242,7 @@ Groovy({groovy script}, argument1, argument2...argumentN)
 
 == Exercise: Data Transformation
 
-[cols="1,1"]
+[cols="1,5"]
 |===
 a|image::images/plus.png[]
 |In this exercise, we will use some transformation functions while ingesting batch data using CLI.
@@ -1628,11 +1628,11 @@ a|* [ ] Successfully deploy a cluster with Minion, then schedule Minion Tasks
 | What
 | Beyond business metrics, organizations need to be able to detect anomalies on large time-series datasets instantly
 | Example
-| If LinkedIn’s “page views” metric shows an unexpected drop week over week, teams need to understand which dimensions were primarily responsible for causing the anomaly so they can take corrective action immediately
+| If LinkedIn's "page views" drop unexpectedly, teams must identify the which dimension in particular causes the drop to take immediate corrective action.
 | Benefits
-| If LinkedIn’s “page views” metric shows an unexpected drop week over week, teams need to understand which dimensions were primarily responsible for causing the anomaly so they can take corrective action immediately
+| ThirdEye’s visual representation makes it fast and easy to zero in on the root cause, filtering out the noise for fast response times.
 | Pinot Advantage
-| If LinkedIn’s “page views” metric shows an unexpected drop week over week, teams need to understand which dimensions were primarily responsible for causing the anomaly so they can take corrective action immediately
+| Pinot's high QPS and low latency help filter out noise, presenting the right data for near real time root cause analysis.
 |===
 
 == Use Case: Log Analytics / Text Search

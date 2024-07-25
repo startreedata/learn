@@ -21,24 +21,14 @@ docker-compose up
 
 Once that's run, you can navigate the Pinot UI - [http://localhost:9000](http://localhost:9000)
 
-## Exercise 1 - Create Schema, control table, load data
-
-- We will use CLI to create schema and tables, and populate the data.
-- Using either Docker desktop or docker, log into the pinot controller.
-- run the following script to create schema and table:
-
-```bash
-/opt/pinot/bin/pinot-admin.sh AddTable -schemaFile /scripts/gitHub_events_schema.json -tableConfigFile /scripts/gitHub_events_offline_table_config.json -exec
-```
+## Exercise 1 - Load data
 
 - Next, we will populate some data in the tables
 - Run the following script to ingest data from rawdata
 
 ```bash
-cd ../../scripts
-mkdir rawdata
-cd rawdata
-wget https://data.gharchive.org/2021-07-21-{6..9}.json.gz
+cd data
+wget https://data.gharchive.org/2021-07-21-9.json.gz
 gunzip *.json.gz
 /opt/pinot/bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile /scripts/job-spec.yaml
 ```
@@ -53,15 +43,16 @@ We will be using the API to create these tables with indexes.
 - Run the following queries:
 
 ```SQL
+-- Return count of multivalue data as a long
 SELECT count(*), countMV(commit_author_names), countMV(label_ids)
 FROM github_events;
-
+-- Return min of multivalue data
 SELECT minMV(label_ids), maxMV(label_ids), sumMV(label_ids), avgMV(label_ids), minMaxRangeMV(label_ids)
 FROM github_events;
-
+-- Return percentile of multivalue data
 SELECT percentileMV(label_ids, 95), percentileEstMV(label_ids, 95), percentileTDigestMV(label_ids, 95)
 FROM github_events;
-
+-- distinct count for simple and multivalue data
 SELECT distinctCount(created_at),
        distinctCountBitmap(created_at),
        distinctCountMV(label_ids),
@@ -69,14 +60,14 @@ SELECT distinctCount(created_at),
        distinctCountMV(commit_author_names),
        distinctCountBitmapMV(commit_author_names)
 FROM github_events;
-
+-- Returns HyperLogLog response serialized as string
 SELECT distinctCountRawHLLMV(commit_author_names)
 FROM github_events;
 
 -- Aggregation w/ filters, groups and orders, mainly on MV columns
 SELECT commit_author_names, count(*)
 FROM github_events
-WHERE commit_author_names = 'Sterling Greene'
+WHERE commit_author_names = 'Hiro Hamada'
 GROUP BY commit_author_names
 ORDER BY count(*) DESC LIMIT 5;
 
@@ -104,12 +95,14 @@ WHERE label_ids > 1000000000
 GROUP BY repo_name, label_ids
 ORDER BY label_ids ASC LIMIT 5;
 
-SELECT groovy('{"returnType":"STRING","isSingleValue":true}', 'def x = 0; arg0.eachWithIndex{item, idx -> if (item.startsWith("V")) { x = item }}; return x', commit_author_names) AS teammate,
+-- Use groovy function in query
+SELECT groovy('{"returnType":"STRING","isSingleValue":true}', 'def x = 0; arg0.eachWithIndex{item, idx -> if (item.startsWith("Y")) { x = item }}; return x', commit_author_names) AS teammate,
        commit_author_names
 FROM github_events
-WHERE commit_author_names = 'Sterling Greene'
+WHERE commit_author_names = 'Gun1Yun'
 ORDER BY teammate;
 
+-- use IN clause
 SELECT repo_name, valueIn(label_ids, 199293022, 204137300, 3171280082) AS id, count(*)
 FROM github_events
 WHERE label_ids IN (199293022, 204137300, 3171280082)
@@ -137,7 +130,7 @@ SELECT actor_json,
        substr(repo_name, 1, 3),
        concat(repo_name, type, '_')
 FROM github_events
-WHERE json_match(actor_json, '"$.display_login"=''christopherrobin'' AND "$.id"=464211')
+WHERE json_match(actor_json, '"$.display_login"=''maria-canals'' AND "$.id"=73915791')
 ORDER BY created_at LIMIT 5;
 
 SELECT type, strpos(type, 'Event', 1), replace(type, 'Push', 'Pull'), rpad(type, 20, '_'), lpad(type, 20, '_'), codepoint(type), chr(codepoint(type))
@@ -172,12 +165,12 @@ ORDER BY created_at LIMIT 5;
 SELECT id, type, repo_name
 FROM github_events
 WHERE created_at > '2021-07-21T08:00:00Z'
-  AND text_match(payload_pull_request, 'pinotdb*')
+  AND text_match(payload_pull_request, 'react*')
 ORDER BY created_at LIMIT 5;
 
 SELECT id, type, repo_name
 FROM github_events
-WHERE text_match(payload_pull_request, '/.*FailedException/')
+WHERE text_match(payload_pull_request, '/.*ImageInput/')
 ORDER BY created_at LIMIT 5;
 
 -- FST based regexp_like works differently with non-FST based one.
@@ -185,10 +178,20 @@ SELECT id, type, repo_name, repo_name_fst
 FROM github_events
 WHERE regexp_like(repo_name_fst, '.*Eat')
 ORDER BY repo_name LIMIT 5
+
 SELECT id, type, repo_name, repo_name_fst
 FROM github_events
 WHERE regexp_like(repo_name, '.*Eat$')
 ORDER BY repo_name LIMIT 5
+
+-- Explain Plan
+
+-- Single stage Query
+EXPLAIN PLAN FOR SELECT repo_name, count(repo_name) FROM github_events GROUP BY repo_name
+
+-- Multistage Query
+EXPLAIN PLAN FOR SELECT distinctCount(created_at), distinctCountBitmap(created_at), distinctCountMV(label_ids), distinctCountBitmapMV(label_ids), distinctCountMV(commit_author_names), distinctCountBitmapMV(commit_author_names) FROM github_events
+
 ```
 
 - Navigate to the Tables by going here: [http://localhost:9000/#/tables](http://localhost:9000/#/tables)
@@ -202,4 +205,4 @@ Make sure:
 ## Success
 
 There! 
-You've just created three tables!
+You've just run several queries on Pinot!

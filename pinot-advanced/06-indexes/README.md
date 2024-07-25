@@ -21,7 +21,7 @@ docker-compose up
 
 Once that's run, you can navigate the Pinot UI - [http://localhost:9000](http://localhost:9000)
 
-## Exercise 0 - Create Schema, control table, load data
+## Exercise 0 - Create table, load data
 
 We will use the same schema to create different tables to compare performance
 
@@ -30,34 +30,64 @@ We will use the same schema to create different tables to compare performance
 - run the following script to create schema and table:
 
 ```bash
-/opt/pinot/bin/pinot-admin.sh AddTable -schemaFile /scripts/gitHub_events_schema.json -tableConfigFile /scripts/gitHub_events_offline_table_config.json -exec 
+docker exec -it pinot-controller sh
+/opt/pinot/bin/pinot-admin.sh AddTable -schemaFile /scripts/gitHub_events_schema.json -tableConfigFile /scripts/gitHub_events_offline_table_config.json -exec
 ```
 
 - Next, we will populate some data in the tables
 - Run the following script to ingest data from rawdata
 
 ```bash
-gunzip /scripts/rawdata/*.json.gz
+cd data
+wget https://data.gharchive.org/2021-07-21-9.json.gz
+wget https://data.gharchive.org/2021-07-21-10.json.gz
+wget https://data.gharchive.org/2021-07-21-11.json.gz
+wget https://data.gharchive.org/2021-07-21-12.json.gz
+gunzip *.gz
 /opt/pinot/bin/pinot-admin.sh LaunchDataIngestionJob -jobSpecFile /scripts/job-spec.yaml
 ```
 
 - Use the UI to validate that the table was created and data was added.
 
-## Exercise 1 - Inverted Index
+## Excercise 1 - Adding Index
 
-We will be using the API to create these tables with indexes.
+To add an index, you can ecdit the Table Config file.
 
-- Navigate to the following URL to access the API: [http://localhost:9000/#/help](http://localhost:9000/#/help)
-- add stuff
-- Navigate to the Tables by going here: [http://localhost:9000/#/tables](http://localhost:9000/#/tables)
+Edit the github_events_offlien_table_config.jason and add a bloom filter to the column 'commit_author_names' in the tableIndexConfig section:
+
+``` json
+"bloomFilterColumns": [
+      "id",
+      "commit_author_names",
+      "label_ids"
+    ],
+```
+Note: that you can do this using the UI, or by editing the config directly.
+
+## Excercise 2 - Using Indexes
+
+We can run queries with and without indexes.  In this example, we will se the Bloom Filter. Bloom filters help by pruning segments for equity clause.
+
+Let's start with comparing these two queries:
+
+``` SQL
+-- without index
+SET skipIndexes='commit_author_names=bloomFilter';
+select * from github_events where commit_author_names = 'Hoversquid';
+
+-- with index
+select * from github_events where commit_author_names = 'Hoversquid'
+```
 
 ## Validate deployment
 
 Make sure:
 
-- Three Schemas are created
-- Three Tables are created
+- The Schemas are created
+- The Tables are created
+- Data is loaded
+- You can see the indexes using the UI
 
 ## Success
 
-There! You've just created three tables!
+There! You've just created and used Indexes!
