@@ -1,7 +1,6 @@
-version: '3.7'
 services:
   zookeeper:
-    image: zookeeper:latest
+    image: zookeeper:1.1.0
     hostname: zookeeper
     container_name: zookeeper
     ports:

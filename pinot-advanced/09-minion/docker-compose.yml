@@ -1,6 +1,6 @@
 services:
   zookeeper:
-    image: zookeeper:3.9.2
+    image: zookeeper:1.1.0
     hostname: zookeeper
     container_name: zookeeper
     ports:
@@ -41,6 +41,13 @@ services:
       - pinot-broker
     networks:
       - pinot-advanced
+  pinot-minion:
+    image: apachepinot/pinot:1.1.0
+    command: "StartMinion -zkAddress zookeeper:2181"
+    restart: unless-stopped
+    container_name: "pinot-minion"
+    depends_on:
+      - pinot-server
 networks:
   pinot-advanced:
     name: pinot-advanced

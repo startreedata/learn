@@ -96,7 +96,7 @@ services:
       - pinot-advanced
 
   pinot-node-consumer:
-    image: pinot-advanced/nodejs-streaming-ingest:latest
+    image: pinot-advanced/nodejs-streaming-ingest:1.1.0
     container_name: "pinot-node-consumer"
     restart: on-failure
     depends_on:
