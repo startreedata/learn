@@ -8,11 +8,11 @@ The exercise includes:
 
 - Add schema and table using CLI
 - Examine Transform functions used
-- Use transform funtions in queries
+- Use transform functions in queries
 
 ## Run the docker compose file
 
-``` bash
+```bash
 docker-compose up
 ```
 
@@ -20,7 +20,7 @@ docker-compose up
 
 Once that's run, you can navigate the Pinot UI - [http://localhost:9000](http://localhost:9000)
 
-## Exercise 1 - Deplaoy Table and schema using CLI
+## Exercise 1 - Deploy Table and schema using CLI
 
 In this exercise, we will use the CLI to create a schema and table.
 
@@ -39,21 +39,20 @@ You should see the following files:
 
 Use the following command to create the table
 
-``` bash
+```bash
 /opt/pinot/bin/pinot-admin.sh AddTable -schemaFile /scripts/gitHub_events_schema.json -tableConfigFile /scripts/gitHub_events_offline_table_config.json -exec 
 ```
 
 At this point, you should be able to verify that the Table and schema were created by navigating to <http://localhost:9000> and selecting tables.
 
-## Exercise 2 - Examine native transfform funtions
+## Exercise 2 - Examine native transform functions
 
-In this exercise, we will createlook at the Json transform funtions used in the ingestion process.
+In this exercise, we will look at the JSON transform funtions used in the ingestion process.
 
 - Navigate to the Tables by going here: [http://localhost:9000/#/tenants/table/github_events_OFFLINE](http://localhost:9000/#/tenants/table/github_events_OFFLINE)
-- Look at the table config.  You will notice the folliwing transform funtions:
+- Look at the table config.  You will notice the following transform functions:
 
-``` json
-
+```json
 "transformConfigs": [
         {
           "columnName": "repo_name",
@@ -84,10 +83,9 @@ In this exercise, we will createlook at the Json transform funtions used in the 
           "transformFunction": "jsonPathArrayDefaultEmpty(payload, '$.pull_request.labels[*].id')"
         }
       ],
-
 ```
 
-Notice the use of jsonPathString, jsonFormat and jsonPathArrayDefaultEmpty functions to transform the original json to columns.
+Notice the use of `jsonPathString`, `jsonFormat` and `jsonPathArrayDefaultEmpty` functions to transform the original JSON to columns.
 
 ## Exercise 3 - Groovy Transform
 
@@ -96,7 +94,7 @@ Navigate to the Table Config here: [http://localhost:9000/#/tenants/table/github
 - Notice that the Groovy Function is turned on.
 - Next, we will use groovy functions i the query. Navigate to the query console: [http://localhost:9000/#/query](http://localhost:9000/#/query)
 
-``` SQL
+```SQL
 -- Use groovy function in query
 SELECT groovy('{"returnType":"STRING","isSingleValue":true}', 'def x = 0; arg0.eachWithIndex{item, idx -> if (item.startsWith("Y")) { x = item }}; return x', commit_author_names) AS teammate,
        commit_author_names
@@ -116,5 +114,4 @@ Make sure:
 
 ## Success
 
-There!
 You've just used Transform functions in Pinot!

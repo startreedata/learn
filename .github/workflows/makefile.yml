@@ -1,4 +1,4 @@
-name: Smoketest with docker compose up
+name: Smoke test with docker compose up
 
 on:
   push:
@@ -14,11 +14,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: make pull_images
+      - name: ⬇️ Install dependencies
+        run: make pull_images
 
-    - name: Run check
-      run: make stop_containers
+      - name: ♻️ Dryrun on containers
+        run: make start_all
+
+      - name: 💥 Stop All Containers
+        run: make stop_containers
 

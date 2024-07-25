@@ -1,6 +1,6 @@
 services:
   zookeeper:
-    image: zookeeper:3.5.6
+    image: zookeeper:3.9.2
     hostname: zookeeper
     container_name: zookeeper
     ports:
@@ -13,7 +13,7 @@ services:
   kafka:
     image: docker.io/bitnami/kafka:3.6
     hostname: kafka
-    container_name: kafka
+    container_name: pinot-advanced-kafka
     ports:
       - "29092:29092"
       - "9092:9092"
@@ -32,7 +32,7 @@ services:
       - zookeeper
     networks:
       - pinot-advanced
-    healthcheck: {test: nc -z localhost 9092, interval: 1s}
+    healthcheck: { test: nc -z localhost 9092, interval: 1s }
   
   pinot-controller:
     image: apachepinot/pinot:1.1.0
@@ -48,6 +48,12 @@ services:
       JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms1G -Xmx4G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xloggc:gc-pinot-controller.log"
     depends_on:
       - zookeeper
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:9000/health || exit 1" ]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
     networks:
       - pinot-advanced
 
@@ -62,7 +68,14 @@ services:
     environment:
       JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms4G -Xmx4G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xloggc:gc-pinot-broker.log"
     depends_on:
-      - pinot-controller
+      pinot-controller:
+        condition: service_healthy
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8099/health || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
     networks:
       - pinot-advanced
 
@@ -77,8 +90,15 @@ services:
       - "9015:9015"
     environment:
       JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms4G -Xmx16G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xloggc:gc-pinot-server.log"
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8097/health/readiness || exit 1" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
     depends_on:
-      - pinot-broker
+      pinot-controller:
+        condition: service_healthy
     networks:
       - pinot-advanced
   
@@ -94,13 +114,19 @@ services:
       - kafka
     networks:
       - pinot-advanced
+    depends_on:
+      pinot-controller:
+        condition: service_healthy
+      pinot-broker:
+        condition: service_healthy
 
   pinot-node-consumer:
     image: pinot-advanced/nodejs-streaming-ingest:1.1.0
+    build:
+      context: node-app
     container_name: "pinot-node-consumer"
     restart: on-failure
     depends_on:
-      - pinot-controller
       - kafka
     networks:
       - pinot-advanced

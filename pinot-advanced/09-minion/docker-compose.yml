@@ -1,6 +1,6 @@
 services:
   zookeeper:
-    image: zookeeper:1.1.0
+    image: zookeeper:3.9.2
     hostname: zookeeper
     container_name: zookeeper
     ports:
