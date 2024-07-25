@@ -16,24 +16,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: 🐳 Set up Docker permissions
-        run: |
-          sudo usermod -aG docker $(whoami)
-          newgrp docker
+      - name: 🐳 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: 📦 Cache Docker layers
-        uses: actions/cache@v4
+        uses: actions/cache@v2
         with:
-          path: /tmp/.docker-compose-cache
-          key: ${{ runner.os }}-docker-compose-${{ github.sha }}
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-docker-compose-
+            ${{ runner.os }}-buildx-
 
       - name: 📤 Load cached Docker layers
-        run: |
-          if [ -d "/tmp/.docker-compose-cache" ]; then
-          docker load < /tmp/.docker-compose-cache/layers.tar || true
-          fi
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: make load-cache
 
       - name: ⬇️ Install dependencies
         run: make pull_images
@@ -45,7 +41,4 @@ jobs:
         run: make stop_containers
 
       - name: 📥 Save Docker layers to cache
-        run: |
-          mkdir -p /tmp/.docker-compose-cache
-          docker save $(docker-compose config | grep 'image:' | awk '{print $2}') | gzip > /tmp/.docker-compose-cache/layers.tar
-
+        run: make save-cache
