@@ -1,6 +1,9 @@
 {
     "tableName": "github_events",
     "tableType": "OFFLINE",
+    "query" : {
+      "disableGroovy": false
+    },
     "segmentsConfig": {
       "retentionTimeUnit": "DAYS",
       "retentionTimeValue": "1",
