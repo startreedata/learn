@@ -68,6 +68,10 @@ Follow the instructions in the `README.md` within the respective directories to 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
 - [Apache Kafka](https://kafka.apache.org/)
 
+## Questions?
+
+Join [Apache Pinot™ Community Slack](https://apache-pinot.slack.com/join/shared_invite/zt-5z7pav2f-yYtjZdVA~EDmrGkho87Vzw#/shared-invite/email), ask questions and troubleshoot together! 
+
 ## Contributing
 
 We welcome contributions to improve these training exercises.
