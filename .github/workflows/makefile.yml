@@ -16,6 +16,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: 🐳 Set up Docker permissions
+        run: |
+          sudo usermod -aG docker $(whoami)
+          newgrp docker
+
+      - name: 📦 Cache Docker layers
+        uses: actions/cache@v4
+        with:
+          path: /tmp/.docker-compose-cache
+          key: ${{ runner.os }}-docker-compose-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-docker-compose-
+
+      - name: 📤 Load cached Docker layers
+        run: |
+          if [ -d "/tmp/.docker-compose-cache" ]; then
+          docker load < /tmp/.docker-compose-cache/layers.tar || true
+          fi
+
       - name: ⬇️ Install dependencies
         run: make pull_images
 
@@ -24,4 +43,9 @@ jobs:
 
       - name: 💥 Stop All Containers
         run: make stop_containers
+
+      - name: 📥 Save Docker layers to cache
+        run: |
+          mkdir -p /tmp/.docker-compose-cache
+          docker save $(docker-compose config | grep 'image:' | awk '{print $2}') | gzip > /tmp/.docker-compose-cache/layers.tar
 
