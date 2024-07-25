@@ -111,8 +111,8 @@ Make sure:
 
 - Three Schemas are created
 - Three Tables are created
-- Transform functions were used
-- 
+- Native Transform functions were used
+- Groovy Transform Functions were used.
 
 ## Success
 
