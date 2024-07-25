@@ -28,7 +28,6 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: 📤 Load cached Docker layers
-        if: steps.cache.outputs.cache-hit == 'true'
         run: make load_cache
 
       - name: ⬇️ Install dependencies
