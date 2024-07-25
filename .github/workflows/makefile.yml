@@ -1,0 +1,24 @@
+name: Smoketest with docker compose up
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    defaults:
+      run:
+        working-directory: ./pinot-advanced
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: make pull_images
+
+    - name: Run check
+      run: make stop_containers
+
