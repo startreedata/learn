@@ -126,7 +126,7 @@ Pinot Controller’s configuration defines the following:
 [source]
 ----
 pinot-controller:
-    image: apachepinot/pinot:1.1.0                          <1>
+    image: apachepinot/pinot:1.1.0-21-openjdk                          <1>
     command: "StartController -zkAddress zookeeper:2181"    <2>
     container_name: "pinot-controller"                      <3>
     restart: unless-stopped                                 <4> 
@@ -154,7 +154,7 @@ Pinot Server’s configuration defines:
 [source]
 ----
 pinot-server:
-    image: apachepinot/pinot:1.1.0                      <1>
+    image: apachepinot/pinot:1.1.0-21-openjdk                      <1>
     command: "StartServer -zkAddress zookeeper:2181"    <2>
     restart: unless-stopped                             <3>
     container_name: "pinot-server"                      <4>

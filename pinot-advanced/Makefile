@@ -2,7 +2,8 @@
 DIRS := 01-create-cluster 02-add-table 03-batch-ingestion 04-stream-ingestion 05-queries  06-indexes 07-transform 08-upserts 09-minion 10-create-tenant
 
 # GH Action runner runs out of disk space if cache from every folder
-CACHE_DIRS := 04-stream-ingestion 05-queries 08-upserts
+# 04-stream-ingestion has all the images that required
+CACHE_DIRS := 04-stream-ingestion
 
 .ONESHELL:
 

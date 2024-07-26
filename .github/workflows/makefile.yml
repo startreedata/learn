@@ -27,8 +27,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-#      - name: 📤 Load cached Docker layers
-#        run: make load_cache
+      - name: 📤 Load cached Docker layers
+        run: make load_cache
 
       - name: ⬇️ Install dependencies
         run: make pull_images
@@ -39,5 +39,5 @@ jobs:
       - name: 💥 Stop All Containers
         run: make stop_containers
 
-#      - name: 📥 Save Docker layers to cache
-#        run: make save_cache
+      - name: 📥 Save Docker layers to cache
+        run: make save_cache
