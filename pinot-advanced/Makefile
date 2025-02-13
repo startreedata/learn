@@ -39,7 +39,7 @@ start_all:
 
 DIR4=04-stream-ingestion
 build:
-	cd $(DIR4) && docker-compose build -q 
+	cd $(DIR4) && docker build -t pinot-advanced/nodejs-streaming-ingest ./node-app
 
 load_cache:
 	$(foreach dir,$(CACHE_DIRS), \
