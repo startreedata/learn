@@ -34,7 +34,7 @@ services:
       - pinot-advanced
     healthcheck: {test: nc -z localhost 9092, interval: 1s}
   pinot-controller:
-    image: apachepinot/pinot:1.1.0-21-openjdk
+    image: apachepinot/pinot:1.2
     command: "StartController -zkAddress zookeeper:2181"
     container_name: "pinot-controller"
     volumes:
@@ -47,7 +47,7 @@ services:
     networks:
       - pinot-advanced
   pinot-broker:
-    image: apachepinot/pinot:1.1.0-21-openjdk
+    image: apachepinot/pinot:1.2
     command: "StartBroker -zkAddress zookeeper:2181"
     restart: unless-stopped
     container_name: "pinot-broker"
@@ -58,7 +58,7 @@ services:
     networks:
       - pinot-advanced
   pinot-server:
-    image: apachepinot/pinot:1.1.0-21-openjdk
+    image: apachepinot/pinot:1.2
     command: "StartServer -zkAddress zookeeper:2181"
     restart: unless-stopped
     container_name: "pinot-server"
