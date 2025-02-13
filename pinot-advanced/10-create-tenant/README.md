@@ -42,7 +42,7 @@ One quick way we can complete this is by using the ZooKeeper.
 - Find one of the servers, and remove the tag from TAG_LIST `DefaultTenant_OFFLINE` and `DefaultTenant_REALTIME`
 - Check the main Pinot UI page to confirm that DefaultTenant only shows one server.
 
-## Crete Tenants using API
+## Create Tenants using API
 
 Let's create tenants using the API.
 
