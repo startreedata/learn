@@ -51,7 +51,7 @@ services:
     networks:
       - pinot-advanced
   pinot-server2:
-    image: apachepinot/pinot:1.2
+    image: apachepinot/pinot:1.2.0
     command: "StartServer -zkAddress zookeeper:2181"
     restart: unless-stopped
     container_name: "pinot-server2"
