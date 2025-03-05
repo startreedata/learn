@@ -126,7 +126,7 @@ services:
   sql-client:
     build:
       context: flink
-    container_name: kdp-flink
+    container_name: flink
     command: bin/sql-client.sh
     depends_on:
       - jobmanager
