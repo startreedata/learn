@@ -1,0 +1,19 @@
+{
+    "schemaName": "games",
+    "dimensionFieldSpecs": [
+      {
+        "name": "game_id",
+        "dataType": "INT"
+      },
+      {
+        "name": "game_name",
+        "dataType": "STRING"
+      }
+    ],
+    "dateTimeFieldSpecs": [{
+        "name": "game_created_time",
+        "dataType": "LONG",
+        "format": "EPOCH",
+        "granularity": "1:SECONDS"
+    }]
+  }

@@ -36,6 +36,7 @@ The course is divided into two main sections, each focusing on different aspects
 
 1. **Pinot 101**: Basic introduction and quickstart guide.
 2. **Pinot Advanced**: Detailed exercises covering various advanced topics.
+3. **KDP Stack**: Kafka-Flink-Pinot - how to deploy the Kafka-Flink-Pinot stack.
 
 ## Exercises
 
@@ -61,6 +62,12 @@ Each subdirectory under `pinot-advanced` contains scripts and instructions for a
 10. **Create Tenant**: `pinot-advanced/10-create-tenant`
 
 Follow the instructions in the `README.md` within the respective directories to complete each exercise.
+
+### KDP stack
+
+Directory: kafka-flink-pinot
+
+Follow the instruction in the [README.md](kafka-flink-pinot/README.md) within this directory to complte the exercise.
 
 ## Resources
 

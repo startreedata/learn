@@ -1,0 +1,19 @@
+{
+    "schemaName" : "playerscores",
+    "dimensionFieldSpecs" : [ {
+      "name" : "player_id",
+      "dataType" : "INT"
+    }, {
+        "name" : "game_id",
+        "dataType" : "INT"
+      }, {
+      "name" : "score",
+      "dataType" : "DOUBLE"
+    } ],
+    "dateTimeFieldSpecs": [{
+        "name": "score_time",
+        "dataType": "LONG",
+        "format": "EPOCH",
+        "granularity": "1:SECONDS"
+    }]
+}

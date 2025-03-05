@@ -1,0 +1,27 @@
+{
+    "schemaName": "players",
+    "dimensionFieldSpecs": [
+      {
+        "name": "player_id",
+        "dataType": "INT"
+      },
+      {
+        "name": "player_name",
+        "dataType": "STRING"
+      },
+      {
+        "name": "player_age",
+        "dataType": "INT"
+      },
+      {
+        "name": "player_country",
+        "dataType": "STRING"
+      }
+    ],
+    "dateTimeFieldSpecs": [{
+        "name": "player_created_time",
+        "dataType": "LONG",
+        "format": "EPOCH",
+        "granularity": "1:SECONDS"
+    }]
+  }
