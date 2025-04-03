@@ -1,0 +1,4 @@
+.idea/
+volumes/
+docker-compose.yml
+.dockerignore

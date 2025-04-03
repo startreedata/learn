@@ -1,0 +1,84 @@
+{
+  "schemaName": "ticker",
+  "enableColumnBasedNullHandling": true,
+  "dimensionFieldSpecs": [
+    {
+      "name": "type",
+      "dataType": "STRING"
+    },
+    {
+      "name": "product_id",
+      "dataType": "STRING"
+    },
+    {
+      "name": "sequence",
+      "dataType": "LONG"
+    },
+    {
+      "name": "side",
+      "dataType": "STRING"
+    }
+  ],
+  "dateTimeFieldSpecs": [
+    {
+      "name": "time_ms",
+      "dataType": "LONG",
+      "format": "1:MILLISECONDS:EPOCH",
+      "granularity": "1:MILLISECONDS",
+      "notNull": true
+    }
+  ],
+  "primaryKeyColumns": [
+    "sequence"
+  ],
+  "metricFieldSpecs": [
+    {
+      "name": "price",
+      "dataType": "FLOAT"
+    },
+    {
+      "name": "open_24h",
+      "dataType": "FLOAT"
+    },
+    {
+      "name": "volume_24h",
+      "dataType": "FLOAT"
+    },
+    {
+      "name": "low_24h",
+      "dataType": "FLOAT"
+    },
+    {
+      "name": "high_24h",
+      "dataType": "FLOAT"
+    },
+    {
+      "name": "volume_30d",
+      "dataType": "FLOAT"
+    },
+    {
+      "name": "best_bid",
+      "dataType": "FLOAT"
+    },
+    {
+      "name": "best_bid_size",
+      "dataType": "FLOAT"
+    },
+    {
+      "name": "best_ask",
+      "dataType": "FLOAT"
+    },
+    {
+      "name": "best_ask_size",
+      "dataType": "FLOAT"
+    },
+    {
+      "name": "trade_id",
+      "dataType": "LONG"
+    },
+    {
+      "name": "last_size",
+      "dataType": "FLOAT"
+    }
+  ]
+}

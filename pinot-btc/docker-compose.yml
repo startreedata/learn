@@ -1,0 +1,90 @@
+version: "3"
+
+services:
+  pinot-zookeeper:
+    image: zookeeper:latest
+    container_name: pinot-zookeeper
+    platform: linux/x86_64
+    ports:
+      - "2181:2181"
+    healthcheck:
+      interval: 5s
+      retries: 3
+      test: echo srvr | nc pinot-zookeeper 2181
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      LD_BIND_NOW: 1
+  pinot-controller:
+    image: apachepinot/pinot:1.2.0
+    command: "StartController -zkAddress pinot-zookeeper:2181"
+    container_name: pinot-controller
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+    environment:
+      JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms1G -Xmx4G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xloggc:gc-pinot-controller.log"
+    depends_on:
+      - pinot-zookeeper
+    volumes:
+      - "./files/:/tmp/files"
+  pinot-broker:
+    image: apachepinot/pinot:1.2.0
+    command: "StartBroker -zkAddress pinot-zookeeper:2181"
+    restart: unless-stopped
+    container_name: "pinot-broker"
+    ports:
+      - "8099:8099"
+    environment:
+      JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms4G -Xmx4G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xloggc:gc-pinot-broker.log"
+    depends_on:
+      - pinot-controller
+  pinot-server:
+    image: apachepinot/pinot:1.2.0
+    command: "StartServer -zkAddress pinot-zookeeper:2181"
+    restart: unless-stopped
+    container_name: "pinot-server"
+    ports:
+      - "8098:8098"
+    environment:
+      JAVA_OPTS: "-Dplugins.dir=/opt/pinot/plugins -Xms4G -Xmx16G -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -Xloggc:gc-pinot-server.log"
+    depends_on:
+      - pinot-broker
+
+  kafka:
+    hostname: kafka
+    image: debezium/kafka:3.0.0.Final
+    depends_on:
+      pinot-zookeeper:
+        condition: service_healthy
+    environment:
+      - KAFKA_BROKER_ID=1
+      - ZOOKEEPER_CONNECT=pinot-zookeeper:2181
+      #      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      #      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://broker:29092,PLAINTEXT_HOST://localhost:9092
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
+      - KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS=0
+      - KAFKA_HEAP_OPTS=-Xms256m -Xmx256m
+      - KAFKA_CONFLUENT_SUPPORT_METRICS_ENABLE=false
+      - KAFKA_MESSAGE_MAX_BYTES=5242880
+      - KAFKA_MAX_MESSAGE_BYTES=5242880
+      - LD_BIND_NOW=1
+    ports:
+      - "9092:9092"
+
+  ticker:
+    hostname: ticker
+    image: ticker:latest
+    build:
+      context: .
+    depends_on:
+      - kafka
+
+  superset:
+    image: apachepinot/pinot-superset:latest
+    command: ""
+    environment:
+      SUPERSET_SECRET_KEY: "pmFmur1eluMiQDoZA+cGHhY/cA8+0+Ko7EZi5afhXWlH1oH/rQkVHNVOY1hRXAUi"
+      TALISMAN_ENABLED: "False"
+    ports:
+      - "8088:8088"
