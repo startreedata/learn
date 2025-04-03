@@ -1,0 +1,31 @@
+{
+  "schemaName": "portfolio",
+  "enableColumnBasedNullHandling": true,
+  "dimensionFieldSpecs": [
+    {
+      "name": "id",
+      "dataType": "LONG"
+    },
+    {
+      "name": "side",
+      "dataType": "STRING"
+    },
+    {
+      "name": "size",
+      "dataType": "FLOAT"
+    }
+  ],
+  "dateTimeFieldSpecs": [
+    {
+      "name": "time_ms",
+      "dataType": "LONG",
+      "format": "1:MILLISECONDS:EPOCH",
+      "granularity": "1:MILLISECONDS",
+      "notNull": true
+    }
+  ],
+  "primaryKeyColumns": [
+    "id"
+  ],
+  "metricFieldSpecs": []
+}

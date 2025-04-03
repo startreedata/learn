@@ -1,0 +1,13 @@
+{
+  "tableName": "portfolio",
+  "tableType": "OFFLINE",
+  "segmentsConfig": {
+    "replication": 1,
+    "schemaName": "portfolio",
+    "timeColumnName": "time_ms"
+  },
+  "tenants": {},
+  "tableIndexConfig": {},
+  "ingestionConfig": {},
+  "metadata": {}
+}

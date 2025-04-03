@@ -1,0 +1,23 @@
+executionFrameworkSpec:
+  name: 'standalone'
+  segmentGenerationJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner'
+  segmentTarPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentTarPushJobRunner'
+jobType: SegmentCreationAndTarPush
+inputDirURI: '/tmp/files'
+includeFileNamePattern: 'glob:**/*.csv'
+outputDirURI: '/tmp/files'
+overwriteOutput: true
+pinotFSSpecs:
+  - scheme: file
+    className: org.apache.pinot.spi.filesystem.LocalPinotFS
+recordReaderSpec:
+  dataFormat: 'csv'
+  className: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReader'
+  configClassName: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReaderConfig'
+tableSpec:
+  tableName: 'portfolio'
+pinotClusterSpecs:
+  - controllerURI: 'http://localhost:9000'
+pushJobSpec:
+  pushParallelism: 2
+  pushAttempts: 2
